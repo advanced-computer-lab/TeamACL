@@ -1,32 +1,41 @@
-<<<<<<< Updated upstream
-=======
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const adminSchema = new Schema({
-  FirstName: {
+const userSchema = new Schema({
+  First_Name: {
     type: String,
     required: true,
   },
-  LastName: {
+  Last_Name: {
     type: String,
-    required: true
+    required: true,
   },
-  
   Email: {
     type: String,
     required: true
   },
- 
-  DateOfBirth: {
-    type: date,
+  Birth_Date: {
+    type: Date,
+    required: true,
+  },
+  LivesIn: {
+    type: String,
     required: true
   },
-
-
-
+  Password: {
+    type: String,
+    required: true
+  },
+  
+  PhoneNumber: {
+    type: String,
+    required: true
+  },
+  Gender: {
+    type: String,
+    required: true
+  }
 }, { timestamps: true });
 mongoose.models = {}
-const User = mongoose.model('User', adminSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;
->>>>>>> Stashed changes

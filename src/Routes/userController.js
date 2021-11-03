@@ -1,6 +1,7 @@
 // #Task route solution
 const User = require('../models/User');
-  //Add-user
+const Flight = require('../models/Flight');
+//Add-user
 
 /*exports.addUser = (req, res) => {
     
@@ -30,7 +31,8 @@ const User = require('../models/User');
         console.log(err);
       });
   };
-// getting all the users
+
+// getting all the flights
 
 exports.viewFlights = (req, res) => {                                               ``
        Flight.find({})
@@ -43,7 +45,8 @@ exports.viewFlights = (req, res) => {                                           
     };
 
     exports.getFlight = (req, res) => {
-      User.find({Name:req.params.name})
+      Flight.find({FlightNumber:req.params.flightNumber,DepartureTime:req.params.departureTime,ArrivalTime:req.params.arrivalTime,
+        DateOfFlight:req.params.dateOfFlight,AirportTerminals:req.params.airportTerminals})
         .then(result => {
           res.send(result);
         })
@@ -51,9 +54,10 @@ exports.viewFlights = (req, res) => {                                           
           console.log(err);
         });
     };
-
+   
+  //flightNumber,departureTime,arrivalTime,dateOfFlight,dateOfFlight,airportTerminals
     exports.updateFlight = (req,res)=>{
-        User.findByIdAndUpdate(req.params.id,req.body).then(result =>{
+        Flight.findByIdAndUpdate(req.params.id,req.body).then(result =>{
     
             res.status(200).send("Flight updated ");
             console.log('The Flight is Updated successfully !');
