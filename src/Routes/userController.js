@@ -67,8 +67,8 @@ exports.viewFlights = (req, res) => {                                           
         };
   
     //Deleting an existing user
-    exports.deleteUFlight = (req,res)=>{
-        User.findByIdAndRemove(req.params.id).then(result =>{
+    exports.deleteFlight = (req,res)=>{
+        Flight.findByIdAndRemove(req.params.id).then(result =>{
     
             res.status(200).send ("Flight Deleted ");
             console.log("The Flight is deleted successfully !");

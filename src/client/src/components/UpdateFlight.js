@@ -17,6 +17,8 @@ class UpdateFlightInfo extends Component {
         AirportTerminals: '',
     };
   }
+ 
+};
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
@@ -91,7 +93,7 @@ class UpdateFlightInfo extends Component {
           <div className="col-md-8 m-auto">
           <form noValidate onSubmit={this.onSubmit}>
             <div className='form-group'>
-              <label htmlFor="title">FlightNumber</label>
+              <label htmlFor="title">Title</label>
               <input
                 type='text'
                 placeholder='Title of the Book'
