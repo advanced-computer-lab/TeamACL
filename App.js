@@ -33,7 +33,7 @@ app.post('/add-Flight', userController.addFlight)
 app.get('/view-flights',userController.viewFlights)
 
 app.get('/search-specific-flights/:flightNumber,departureTime,arrivalTime,dateOfFlight,airportTerminals', userController.getFlight)
-app.get('/get-all-flights/:name', userController.viewFlights)
+
 app.put('/update-flight/:id',userController.updateFlight)
 app.delete('/delete-flight/:id',userController.deleteFlight)                                    
 
