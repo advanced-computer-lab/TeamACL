@@ -1,37 +1,181 @@
-import {useState} from "react"
-import axios from "axios"
-const CreateFlight = () => {
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 
-    const [from, setFrom] = useState()
-    const [to, setTo] = useState()
-    const [flghtdate, setFlightDate] = useState()
-    const [seatsavailableonflight, setSeatsAvailableOnFlight] = useState()
-    console.log(flightdate)
-    const sub = function (e) {
-        e.preventDefault()
-        axios.post("http://localhost:8000/add-flight", JSON.stringify({
-            From: from,
-            To : to,
-            FlightDate : flightdate,
-            Cabin: cabin,
-            SeatsAvailableOonFlight: seatavailableonflight,          
-        }), {headers:{"Content-Type" : "application/json"}})
+class CreateFlight extends Component {
 
+    constructor() {
+        super();
+        this.state = {
+          FlightNumber: '',
+          DepartureTime:'',
+          ArrivalTime:'',
+          DateOfFlight:'',
+          NumberOfEconomySeats:'',
+          NumberOfBusinessSeats:'',
+          Airport:'',
+          AirportTerminals:''
+        };
+      }
+    
+      onChange = e => {
+        this.setState({ [e.target.name]: e.target.value });
+      };
+    
+      onSubmit = e => {
+        e.preventDefault();
+    
+        const data = {
+          FlightNumber: this.state.FlightNumber,
+          DepartureTime: this.state.DepartureTime,
+          ArrivalTime: this.state.ArrivalTime,
+          DateOfFlight: this.state.DateOfFlight,
+          NumberOfEconomySeats: this.state.NumberOfEconomySeats,
+          NumberOfBusinessSeats: this.state.NumberOfBusinessSeats,
+          Airport: this.state.Airport,
+          AirportTerminals: this.state.AirportTerminals
+        };
+    
+        axios
+          .post('http://localhost:8000/add-flight', data)
+          .then(res => {
+            this.setState({
+              FlightNumber: '',
+              DepartureTime:'',
+              ArrivalTime:'',
+              DateOfFlight:'',
+              NumberOfEconomySeats:'',
+              NumberOfBusinessSeats:'',
+              Airport:'',
+              AirportTerminals:''
+            })
+            this.props.history.push('/');
+          })
+          .catch(err => {
+            console.log("Error in Create Flight!");
+          })
+      };
+    
+    
+    
+      render() {
+        return (
+          <div className="CreateFlight">
+            <div className="container">
+              <div className="row">
+                <div className="col-md-8 m-auto">
+                  <br />
+                  <Link to="/" className="btn btn-outline-warning float-left">
+                      Show Flight List
+                  </Link>
+                </div>
+                <div className="col-md-8 m-auto">
+                  <h1 className="display-4 text-center">Add User</h1>
+                  <p className="lead text-center">
+                      Create new Flight
+                  </p>
+    
+                  <form noValidate onSubmit={this.onSubmit}>
+                    <div className='form-group'>
+                      <input
+                        type='text'
+                        placeholder='FlightNumber'
+                        name='FlightNumber'
+                        className='form-control'
+                        value={this.state.FlightNumber}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                    <br />
+    
+                    <div className='form-group'>
+                      <input
+                        type='text'
+                        placeholder='DepartureTime'
+                        name='DepartureTime'
+                        className='form-control'
+                        value={this.state.DepartureTime}
+                        onChange={this.onChange}
+                      />
+                    </div>
+    
+                    <div className='form-group'>
+                      <input
+                        type='String'
+                        placeholder='ArrivalTime'
+                        name='ArrivalTime'
+                        className='form-control'
+                        value={this.state.ArrivalTime}
+                        onChange={this.onChange}
+                      />
+                    </div>
+    
+                    <div className='form-group'>
+                      <input
+                        type='Date'
+                        placeholder='DateOfFlight'
+                        name='DateOfFlight'
+                        className='form-control'
+                        value={this.state.DateOfFlight}
+                        onChange={this.onChange}
+                      />
+                    </div>
+    
+                    <div className='form-group'>
+                      <input
+                        type='Number'
+                        placeholder='NumberOfEconomySeats'
+                        name='NumberOfEconomySeats'
+                        className='form-control'
+                        value={this.state.NumberOfEconomySeats}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <input
+                        type='Number'
+                        placeholder='NumberOfBusinessSeats'
+                        name='NumberOfBusinessSeats'
+                        className='form-control'
+                        value={this.state.NumberOfBusinessSeats}
+                        onChange={this.onChange}
+                      />
+                    </div>
+    
+                    <div className='form-group'>
+                      <input
+                        type='text'
+                        placeholder='Airport'
+                        name='Airport'
+                        className='form-control'
+                        value={this.state.PhoneNumber}
+                        onChange={this.onChange}
+                      />
+                    </div>
+                    <div className='form-group'>
+                      <input
+                        type='text'
+                        placeholder='AirportTerminals'
+                        name='AirportTerminals'
+                        className='form-control'
+                        value={this.state.AirportTerminals}
+                        onChange={this.onChange}
+                      />
+                    </div>
+    
+    
+    
+                    <input
+                        type="submit"
+                        className="btn btn-outline-warning btn-block mt-4"
+                    />
+                  </form>
+              </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
     }
 
-    return (<form>
-    <label for="From">From:</label>
-    <input type="text" id="From" name="From" onChange={(event) => setFrom(event.target.value)}/>
-    <label for="To">Email:</label>
-    <input type="text" id="To" name="To"  onChange={(event) => setTo(event.target.value)}/>
-    <label for="FlightDate">FlightDate:</label>
-    <input type="text" id="FlightDate" name="FlightDate"  onChange={(event) => setFlightDate(event.target.value)}/>
-    <label for="Cabin">Cabin:</label>
-    <input type="text" id="Cabin" name="Cabin"  onChange={(event) => setCabin(event.target.value)}/>
-    <label for="SeatsAvailableOnFlight">SeatsAvailableOnFlight:</label>
-    <input type="text" id="SeatsAvailableOnFlight" name="SeatsAvailableOnFlight"  onChange={(event) => setSeatsAvailableOnFlight(event.target.value)}/>  
-    <button type="submit" value="Submit" onClick={sub} >submit </button>
-  </form> )
-}
-
-export default CreateFlight 
+export default CreateFlight;

@@ -18,7 +18,7 @@ class UpdateFlightInfo extends Component {
     };
   }
  
-};
+
 
   componentDidMount() {
     // console.log("Print id: " + this.props.match.params.id);
