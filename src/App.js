@@ -3,7 +3,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const userController = require("./Routes/userController");
-//var cors = require('cors');
+var cors = require('cors');
 // THIS IS WRONG NEVER DO THAT !! Only for the task we put the DB Link here!! NEVER DO THAAAT AGAIN !!
 
 //App variables
@@ -20,7 +20,7 @@ const MongoURI =
   "mongodb+srv://alaa:1234@cluster0.6ulyk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // #Importing the userController
-//app.use(cors({ origin: true, credentials: true }));
+app.use(cors({ origin: true, credentials: true }));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // To parse the incoming requests with JSON payloads// configurations
 // Mongo DB

@@ -70,7 +70,7 @@ class CreateFlight extends Component {
                   </Link>
                 </div>
                 <div className="col-md-8 m-auto">
-                  <h1 className="display-4 text-center">Add User</h1>
+                  <h1 className="display-4 text-center">Add Flight</h1>
                   <p className="lead text-center">
                       Create new Flight
                   </p>
