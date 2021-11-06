@@ -17,7 +17,8 @@ const Flight = require("./Models/Flight");
 //"mongodb+srv://dbGamal_123:Barakat22@aclflights.higdx.mongodb.net/ACL?retryWrites=true&w=majority";
 
 const MongoURI =
-  "mongodb+srv://alaa:1234@cluster0.6ulyk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+"mongodb+srv://dbGamal_123:Barakat22@aclflights.higdx.mongodb.net/ACL?retryWrites=true&w=majorit";  
+//"mongodb+srv://alaa:1234@cluster0.6ulyk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
 
 // #Importing the userController
 app.use(cors({ origin: true, credentials: true }));

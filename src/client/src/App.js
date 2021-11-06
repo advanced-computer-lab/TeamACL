@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import '../App.css';
+//import '../App.css';
 import axios from 'axios';
 import CreateFlight from './components/CreateFlight';
 import ViewFlight from './components/ViewFlight';
