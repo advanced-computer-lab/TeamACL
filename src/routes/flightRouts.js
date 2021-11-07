@@ -11,7 +11,7 @@ router
 router
   .route("/:id")
   .get(flightController.getFlight)
-  .patch(flightController.updateFlight)
+  .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 
 module.exports = router;

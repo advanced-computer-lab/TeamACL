@@ -2,7 +2,7 @@ const Flight = require("./../models/Flight");
 
 exports.getAllFlights = async (req, res) => {
   try {
-    const flights = await Flight.find(req.query);
+    const flights = await Flight.find();
     res.status(200).json({
       status: "success",
       results: flights.length,
@@ -20,7 +20,7 @@ exports.getAllFlights = async (req, res) => {
 
 exports.getFlight = async (req, res) => {
   try {
-    const flight = await Flight.findById(req.params.id);
+    const flight = await Flight.find(req.body);
     res.status(200).json({
       status: "success",
       data: {
@@ -36,9 +36,10 @@ exports.getFlight = async (req, res) => {
 };
 
 exports.createFLight = async (req, res) => {
+  console.log(req.body);
   try {
     const newFlight = await Flight.create(req.body);
-    res.status(201).json({
+    res.status(200).json({
       status: "success",
       data: {
         Flight: newFlight,
@@ -53,7 +54,9 @@ exports.createFLight = async (req, res) => {
 };
 
 exports.updateFlight = async (req, res) => {
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
   try {
+    console.log(req.body);
     const flight = await Flight.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
@@ -72,9 +75,10 @@ exports.updateFlight = async (req, res) => {
 };
 
 exports.deleteFlight = async (req, res) => {
+  console.log("hamada")
   try {
-    const flight = await Flight.findByIdAndDelete(req.params.id);
-    res.status(204).json({
+    const flight = await Flight.findByIdAndDelete(req.params.id,req.body);
+    res.status(200).json({
       status: "success",
       data: flight,
     });

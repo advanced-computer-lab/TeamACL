@@ -5,9 +5,12 @@ import { useState, useEffect } from 'react';
 
 
 
-const ViewFlight = ({setShowCreateForm,setShowList}) =>
+const ViewFlight = ({setShowCreateForm,setShowList,setShowUpdateForm,setShowDeleteForm}) =>
 {
-  
+  function ClickHandler3(){
+
+    setShowDeleteForm(true);
+  }
   
   function ClickHandler(){
   
@@ -17,7 +20,8 @@ const ViewFlight = ({setShowCreateForm,setShowList}) =>
   function ClickHandler2(){
   
     setShowList(true);}
-
+  
+  
 
    /* function Home() {
       const [list,setList] = useState([]);
@@ -45,6 +49,7 @@ const ViewFlight = ({setShowCreateForm,setShowList}) =>
 
                 ~ view all Flights
                 </button> 
+                
                 </div>
              // <Link to="/update-flight" className="btn btn-outline-warning float-right">
               //
