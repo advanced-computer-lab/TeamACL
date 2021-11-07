@@ -37,10 +37,32 @@ const adminSchema = new Schema({
     type: String,
     required: true
   },
+  From: {
+    type: String,
+    required: true
+  },
+  To: {
+    type: String,
+    required: true
+  },
+  FlightDate: {
+    type: String,
+    required: true
+  },
+  Cabin: {
+    type: String,
+    required: true
+  },
+  SeatsAvailableOnFlight: {
+    type: String,
+    required: true
+  },
+ 
+ 
  
 
 
 }, { timestamps: true });
 mongoose.models = {}
-const User = mongoose.model('User', adminSchema);
+const Flight = mongoose.model('Flight', adminSchema);
 module.exports = Flight;

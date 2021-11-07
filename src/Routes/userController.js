@@ -45,7 +45,7 @@ exports.viewFlights = (req, res) => {                                           
     };
 
     exports.getFlight = (req, res) => {
-      Flight.find({FlightNumber:req.params.flightNumber,DepartureTime:req.params.departureTime,ArrivalTime:req.params.arrivalTime,
+      Flight.find({FlightNumber:req.body.flightNumber,DepartureTime:req.params.departureTime,ArrivalTime:req.params.arrivalTime,
         DateOfFlight:req.params.dateOfFlight,AirportTerminals:req.params.airportTerminals})
         .then(result => {
           res.send(result);
@@ -77,8 +77,3 @@ exports.viewFlights = (req, res) => {                                           
           });
     
       };
-    
-    
-    
-    
-    
