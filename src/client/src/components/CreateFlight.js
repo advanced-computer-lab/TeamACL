@@ -8,6 +8,8 @@ const CreateFlight = () => {
     const [Date, setDate] = useState()
     const [numberOfEconomySeats, setNumberOfEconomySeats] = useState()
     const [numberOfBusinessClassSeats, setNumberOfBusinessClassSeats] = useState()
+    const [airport, setAirport] = useState()
+    const [airportTerminals, setAirport] = useState()
     const [from, setFrom] = useState()
     const [to, setTo] = useState()
     const [flightDate, setFlightDate] = useState()
@@ -25,6 +27,7 @@ const CreateFlight = () => {
             NumberOfEconomySeats: numberOfEconomySeats,
             NumberOfBusinessClassSeats: numberOfBusinessClassSeats,
             Airport: airport,
+            AirportTerminals: airportTerminals,
             From: from,
             To: to,
             FlightDate: flightDate,
@@ -76,6 +79,12 @@ const CreateFlight = () => {
     
     <label for="Airport">Airport:</label>
     <input type="text" id="Airport" name="Airport"  onChange={(event) => setAirport(event.target.value)}/>   
+    <p>
+    <br>
+    </br>
+    </p>
+    <label for="AirportTerminals">AirportTerminals:</label>
+    <input type="text" id="AirportTerminals" name="AirportTerminals"  onChange={(event) => setAirportTerminals(event.target.value)}/>   
     <p>
     <br>
     </br>

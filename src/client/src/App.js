@@ -22,7 +22,7 @@ export default App;import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import CreateFlight from './components/CreateFlight';
-import ViewUFlight from './components/ViewFlight';
+import ViewFlight from './components/ViewFlight';
 import CreateFlight from './CreateFlight';
 
 class App extends Component {
