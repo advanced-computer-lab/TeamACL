@@ -9,6 +9,7 @@ const CreateFlight = () => {
     const [numberOfEconomySeats, setNumberOfEconomySeats] = useState()
     const [numberOfBusinessClassSeats, setNumberOfBusinessClassSeats] = useState()
     const [airport, setAirport] = useState()
+    const [airportTerminals, setAirportTerminals] = useState()
     const [from, setFrom] = useState()
     const [to, setTo] = useState()
     const [flightDate, setFlightDate] = useState()

@@ -1,42 +1,63 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
-class ViewFlightList extends Component {
 
 
-  render() {
+const ViewFlight = ({setShowCreateForm,setShowList}) =>
+{
+  
+  
+  function ClickHandler(){
+  
+    setShowCreateForm(true);}
+
+    
+  function ClickHandler2(){
+  
+    setShowList(true);}
+
+
+   /* function Home() {
+      const [list,setList] = useState([]);
+      //useEffect(()=>{},[]);
+      useEffect(()=>{
+        axios.get(`${route}:${port}`)
+          .then(res => {
+            setList(res.data);
+          })
+    
+    
+      },[]);
+  
+  */
     
 
     return (
-      <div className="ViewFlightList">
        
 
-            <div className="col-md-11">
-            <Link to="/create-flight" className="btn btn-outline-warning float-right">
-                <button>
-                ~ Add New Flight
+            <div>
+                <button onClick={ClickHandler}> ~ Add New Flight
                 </button>
-              </Link>
-              <p>
-                <br>
-                </br>
-                </p>
-              <Link to="/update-flight" className="btn btn-outline-warning float-right">
-              <button>
-                ~ Update Flight
-                </button>
-              </Link>
-              <p>
-                <br>
-                </br>
-                </p>
+               
+                <button onClick = {ClickHandler2}>
+
+                ~ view all Flights
+                </button> 
+                </div>
+             // <Link to="/update-flight" className="btn btn-outline-warning float-right">
+              //
+              //</Link>
+             // <p>
+               // <br>
+                //</br>
+                //</p>
               
              
-            </div>
-      </div>
-    );
+       
+    )
   }
-}
 
-export default ViewFlightList;
+
+export default ViewFlight;
