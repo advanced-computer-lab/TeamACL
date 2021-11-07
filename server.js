@@ -15,7 +15,13 @@ mongoose
     console.log("DB conn success");
   });
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8000;
+app.post("/delete-flight", (req, res) => {
+  const flightNumber = req.body.flightNumber;
+  const airport = req.body.airport;
+  console.log(airport);
+  console.log(flightNumber);
+});
 app.listen(port, () => {
   console.log(`App running on port ${port}...`);
 });

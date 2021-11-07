@@ -1,25 +1,18 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import React, { Component } from "react";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 
+const ViewFlight = ({ setShowCreateForm, setShowList }) => {
+  function ClickHandler() {
+    setShowCreateForm(true);
+  }
 
+  function ClickHandler2() {
+    setShowList(true);
+  }
 
-const ViewFlight = ({setShowCreateForm,setShowList}) =>
-{
-  
-  
-  function ClickHandler(){
-  
-    setShowCreateForm(true);}
-
-    
-  function ClickHandler2(){
-  
-    setShowList(true);}
-
-
-   /* function Home() {
+  /* function Home() {
       const [list,setList] = useState([]);
       //useEffect(()=>{},[]);
       useEffect(()=>{
@@ -32,32 +25,22 @@ const ViewFlight = ({setShowCreateForm,setShowList}) =>
       },[]);
   
   */
-    
 
-    return (
-       
+  return (
+    <div>
+      <Link to="/delete"> click if you want to delete A Specific Flight</Link>
 
-            <div>
-                <button onClick={ClickHandler}> ~ Add New Flight
-                </button>
-               
-                <button onClick = {ClickHandler2}>
-
-                ~ view all Flights
-                </button> 
-                </div>
-             // <Link to="/update-flight" className="btn btn-outline-warning float-right">
-              //
-              //</Link>
-             // <p>
-               // <br>
-                //</br>
-                //</p>
-              
-             
-       
-    )
-  }
-
+      <button onClick={ClickHandler}> ~ Add New Flight</button>
+      <button onClick={ClickHandler2}>~ view all Flights</button>
+    </div>
+    // <Link to="/update-flight" className="btn btn-outline-warning float-right">
+    //
+    //</Link>
+    // <p>
+    // <br>
+    //</br>
+    //</p>
+  );
+};
 
 export default ViewFlight;
