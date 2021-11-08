@@ -54,7 +54,7 @@ exports.createFLight = async (req, res) => {
 };
 
 exports.updateFlight = async (req, res) => {
-  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@")
+  console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
   try {
     console.log(req.body);
     const flight = await Flight.findByIdAndUpdate(req.params.id, req.body, {
@@ -75,9 +75,9 @@ exports.updateFlight = async (req, res) => {
 };
 
 exports.deleteFlight = async (req, res) => {
-  console.log("hamada")
+  console.log("hamada");
   try {
-    const flight = await Flight.findByIdAndDelete(req.params.id,req.body);
+    const flight = await Flight.findByIdAndDelete(req.params.id, req.body);
     res.status(200).json({
       status: "success",
       data: flight,

@@ -27,9 +27,18 @@ function Delete({ id }) {
     setU(true);
   }
   return (
-    <div>
-      <button onClick={sub}>delete</button>
-    </div>
+    <button
+      onClick={() => {
+        if (window.confirm("Are you sure you wish to delete this item?")) {
+          sub();
+        }
+      }}
+    >
+      Delete
+    </button>
+    // <div>
+    //   <button onClick={sub}>delete</button>
+    // </div>
   );
 }
 
