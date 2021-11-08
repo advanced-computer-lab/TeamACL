@@ -20,7 +20,7 @@ exports.getAllFlights = async (req, res) => {
 
 exports.getFlight = async (req, res) => {
   try {
-    const flight = await Flight.findById(req.params.id);
+    const flight = await Flight.find(req.body);
     res.status(200).json({
       status: "success",
       data: {
@@ -34,6 +34,23 @@ exports.getFlight = async (req, res) => {
     });
   }
 };
+
+// exports.searchFlight = async (req, res) => {
+//   try {
+//     const flight = await Flight.find(req.body);
+//     res.status(200).json({
+//       status: "success",
+//       data: {
+//         flight,
+//       },
+//     });
+//   } catch (err) {
+//     res.status(404).json({
+//       status: "fail",
+//       massege: err,
+//     });
+//   }
+// };
 
 exports.createFLight = async (req, res) => {
   try {
