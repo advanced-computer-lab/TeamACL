@@ -2,6 +2,7 @@
   "dependencies": {
     "express": "^4.17.1",
     "mongoose": "^6.0.12",
+    "mongose": "^0.0.2-security",
     "node": "^17.0.1",
     "nodemon": "^2.0.14",
     "react": "^17.0.2"
