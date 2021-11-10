@@ -6,11 +6,11 @@ const router = express.Router();
 router
   .route("/")
   .get(flightController.getAllFlights)
+  .post(flightController.getFlight)
   .post(flightController.createFLight);
 
 router
   .route("/:id")
-  .get(flightController.getFlight)
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 
