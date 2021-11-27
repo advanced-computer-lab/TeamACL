@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const flightSchema = mongoose.Schema({
   FlightNumber: {
+    //needs to be unique....change it later!!!!
     type: Number,
     required: true,
   },

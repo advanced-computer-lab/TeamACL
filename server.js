@@ -12,7 +12,7 @@ mongoose
     useFindAndModify: false,
   })
   .then((con) => {
-    console.log("DB conn success");
+    console.log("DATABASE connected succesfully!!");
   });
 
 const port = process.env.PORT || 8000;
