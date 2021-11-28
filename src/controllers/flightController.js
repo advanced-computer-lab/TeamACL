@@ -21,6 +21,25 @@ exports.getAllFlights = async (req, res) => {
 exports.getFlight = async (req, res) => {
   try {
     const flight = await Flight.find(req.body);
+    console.log(req.body);
+    res.status(200).json({
+      status: "success",
+      data: {
+        flight,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
+exports.getSelectedFlight = async (req, res) => {
+  //for displaying the selected flight whether its a departure or its a return one.
+  try {
+    const flight = await Flight.findById(req.params.id);
+    console.log(req.param);
     res.status(200).json({
       status: "success",
       data: {

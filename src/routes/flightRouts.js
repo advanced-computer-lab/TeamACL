@@ -11,6 +11,7 @@ router
 
 router
   .route("/:id")
+  .get(flightController.getSelectedFlight)
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 
