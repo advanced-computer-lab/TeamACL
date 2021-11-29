@@ -14,4 +14,8 @@ router
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 
+router
+  .route("/View-Departure_Details")
+  .put(flightController.ViewDepartureFlight);
+
 module.exports = router;

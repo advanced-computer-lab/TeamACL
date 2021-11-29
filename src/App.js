@@ -14,6 +14,7 @@ const User = require('./models/User');
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json()) // To parse the incoming requests with JSON payloads// configurations
+
 // Mongo DB
 mongoose.connect(MongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
 .then(result =>console.log("MongoDB is now connected") )

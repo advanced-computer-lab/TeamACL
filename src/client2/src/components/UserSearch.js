@@ -4,25 +4,29 @@ import axios from "axios";
 import { setServers } from "dns";
 
 function SearchFlight() {
-  <h1>Search</h1>
+    
+  const [FlightType, setFlightType] = useState();
   const [FlightNumber, setFlightNumber] = useState();
   const [DepartureTime, setDepartureTime] = useState();
   const [ArrivalTime, setArrivalTime] = useState();
   const [DateOfFlight, setDateOfFlight] = useState();
-  const [NumberOfEconomySeats, setNumberOfEconomySeats] = useState();
-  const [NumberOfBusinessSeats, setNumberOfBusinessSeats] = useState();
-  const [NumberOfFirstSeats, setNumberOfFirstSeats] = useState();
   const [Airport, setAirport] = useState();
   const [AirportTerminals, setAirportTerminals] = useState();
   const [From, setFrom] = useState();
   const [To, setTo] = useState();
-
+  const [Price, setPrice] = useState();
+  const [TripDuration, setTripDuration] = useState();
+  const [Class, setClass] = useState();
+ 
   const [U, setU] = useState(false);
   const [S, setS] = useState([]);
 
   useEffect(() => {
     if (U) {
       const body = {};
+      if (FlightType !== "") {
+        body["FlightType"] = FlightType;
+      }
       if (FlightNumber !== "") {
         body["FlightNumber"] = FlightNumber;
       }
@@ -35,15 +39,6 @@ function SearchFlight() {
       if (DateOfFlight !== "") {
         body["DateOfFlight"] = DateOfFlight;
       }
-      if (NumberOfEconomySeats !== "") {
-        body["NumberOfEconomySeats"] = NumberOfEconomySeats;
-      }
-      if (NumberOfBusinessSeats !== "") {
-        body["NumberOfBusinessSeats"] = NumberOfBusinessSeats;
-      }
-      if (NumberOfFirstSeats !== "") {
-        body["NumberOfFirstSeats"] = NumberOfFirstSeats;
-      }
       if (Airport !== "") {
         body["Airport"] = Airport;
       }
@@ -55,6 +50,15 @@ function SearchFlight() {
       }
       if (To !== "") {
         body["To"] = To;
+      }
+      if (Price !== "") {
+        body["Price"] = Price;
+      }
+      if (TripDuration !== "") {
+        body["TripDuration"] = TripDuration;
+      }
+      if (Class !== "") {
+        body["Class"] = Class;
       }
       console.log("from frontend");
       console.log(body);
@@ -72,7 +76,7 @@ function SearchFlight() {
   return (
     <div>
       <form>
-        <h1>Search</h1>
+      <h1>userSearch</h1>
         <label for="FlightNumber">FlightNumber:</label>
         <input
           type="text"
@@ -80,19 +84,16 @@ function SearchFlight() {
           name="FlightNumber"
           onChange={(event) => setFlightNumber(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
+        <p>          <br></br>        </p>
+
         <label for="DepartureTime">DepartureTime:</label>
         <input
           type="text"
           id="DepartureTime"
           name="DepartureTime"
           onChange={(event) => setDepartureTime(event.target.value)}
-        />
-        <p>
-          <br></br>
-        </p>
+        />       <p>         <br></br>        </p>
+
         <label for="ArrivalTime">ArrivalTime:</label>
         <input
           type="text"
@@ -100,9 +101,7 @@ function SearchFlight() {
           name="ArrivalTime"
           onChange={(event) => setArrivalTime(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
+        <p><br></br></p>
         <label for="DateOfFlight">DateOfFlight:</label>
         <input
           type="text"
@@ -110,39 +109,8 @@ function SearchFlight() {
           name="DateOfFlight"
           onChange={(event) => setDateOfFlight(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
-        <label for="NumberOfEconomySeats">NumberOfEconomySeats:</label>
-        <input
-          type="text"
-          id="NumberOfEconomySeats"
-          name="NumberOfEconomySeats"
-          onChange={(event) => setNumberOfEconomySeats(event.target.value)}
-        />
-        <p>
-          <br></br>
-        </p>
-        <label for="NumberOfBusinessSeats">NumberOfBusinessSeats:</label>
-        <input
-          type="text"
-          id="NumberOfBusinessSeats"
-          name="NumberOfBusinessSeats"
-          onChange={(event) => setNumberOfBusinessSeats(event.target.value)}
-        />
-        <p>
-          <br></br>
-        </p>
-        <label for="NumberOfFirstSeats">NumberOfFirstSeats:</label>
-        <input
-          type="text"
-          id="NumberOfFirstSeats"
-          name="NumberOfFirstSeats"
-          onChange={(event) => setNumberOfFirstSeats(event.target.value)}
-        />
-        <p>
-          <br></br>
-        </p>
+        <p><br></br></p>
+       
         <label for="Airport">Airport:</label>
         <input
           type="text"
@@ -150,9 +118,8 @@ function SearchFlight() {
           name="Airport"
           onChange={(event) => setAirport(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
+        <p><br></br></p>
+
         <label for="AirportTerminals">AirportTerminals:</label>
         <input
           type="text"
@@ -160,9 +127,8 @@ function SearchFlight() {
           name="AirportTerminals"
           onChange={(event) => setAirportTerminals(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
+        <p><br></br></p>
+
         <label for="From">From:</label>
         <input
           type="text"
@@ -170,9 +136,8 @@ function SearchFlight() {
           name="From"
           onChange={(event) => setFrom(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
+        <p> <br></br></p>
+
         <label for="To">To:</label>
         <input
           type="text"
@@ -180,9 +145,35 @@ function SearchFlight() {
           name="To"
           onChange={(event) => setTo(event.target.value)}
         />
-        <p>
-          <br></br>
-        </p>
+        <p><br></br></p>
+
+        <label for="Price">Price:</label>
+        <input
+          type="text"
+          id="Price"
+          name="Price"
+          onChange={(event) => setPrice(event.target.value)}
+        />
+        <p><br></br></p>
+
+        <label for="TripDuration">TripDuration:</label>
+        <input
+          type="text"
+          id="TripDuration"
+          name="TripDuration"
+          onChange={(event) => setTripDuration(event.target.value)}
+        />
+        <p> <br></br></p>
+
+        <label for="Class">Class:</label>
+        <input
+          type="text"
+          id="Class"
+          name="Class"
+          onChange={(event) => setClass(event.target.value)}
+        />
+        <p><br></br> </p>
+        
         <button type="Update Flight" value="Update Flight" onClick={sub}>
           Search flight{" "}
         </button>
