@@ -34,18 +34,6 @@ const flightSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  EconomyPrice: {
-    type: Number,
-    required: true,
-  },
-  BusinessPrice: {
-    type: Number,
-    required: true,
-  },
-  FirstClassPrice: {
-    type: Number,
-    required: true,
-  },
   Airport: {
     type: String,
     required: true,
@@ -67,6 +55,10 @@ const flightSchema = mongoose.Schema({
     required: true,
   },
   BaggageAllowance: {
+    type: Number,
+    required: true,
+  },
+  TypeOfFlight: {
     type: String,
     required: true,
   },
