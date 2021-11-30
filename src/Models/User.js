@@ -44,6 +44,9 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  ReservedFlights: {
+    type: Array,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
