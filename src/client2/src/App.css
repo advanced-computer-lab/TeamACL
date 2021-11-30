@@ -1,3 +1,4 @@
+
 .App {
   text-align: center;
 }
@@ -11,6 +12,22 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+Nav{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  min-height: 10vh;
+  background: rgb(68, 112, 134);
+  color: beige;
+}
+
+
+.Nav-Links{
+ width: 50%;
+ display: flex;
+ justify-content: space-around;
+ align-items: center;
 }
 
 .App-header {

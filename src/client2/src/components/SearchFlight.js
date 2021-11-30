@@ -22,9 +22,16 @@ function SearchFlight() {
   const [U, setU] = useState(false);
   const [S, setS] = useState([]);
 
-  useEffect(() => {
-    if (U) {
-      const body = {};
+  // useEffect(() => {
+  //   if (U) {
+      
+  //     //setU(false);
+  //   }
+    
+  // }, [U]);
+
+  function sub() {
+    const body = {};
       if (FlightNumber !== "") {
         body["FlightNumber"] = FlightNumber;
       }
@@ -62,22 +69,17 @@ function SearchFlight() {
       console.log(body);
       
       axios
-        .get(`http://localhost:3000/api/v1/flights`, body)
-        .then((res) => {setS(res.data.data.flights)
-          console.log(res)
+        .post(`http://localhost:3000/api/v1/flights/findFlight`, body)
+        .then((res) => {
+          setS(res.data)
+          console.log(res.data)
         })
-        .catch((err) => console.log(err));
-      setU(false);
-    }
-    
-  }, [U]);
-  function sub() {
-    setU(true);
+        .catch((err) => console.log("error herererere"));
   }
 
   return (
     <div>
-      <form>
+      <form onSubmit={(e) => e.preventDefault()}>
         <h1>Search</h1>
         <label for="FlightNumber">FlightNumber:</label>
         <input
@@ -194,8 +196,8 @@ function SearchFlight() {
         </button>
       </form>
 
-      {S.map((val) => {
-        <div>
+      {S.map((val) => (
+        <div key={val._id}>
           <div>{val.FlightNumber}</div>
           <div>{val.DepartureTime}</div>
           <div>{val.ArrivalTime}</div>
@@ -204,8 +206,8 @@ function SearchFlight() {
           <div>{val.NumberOfBusinessSeats}</div>
           <div>{val.From}</div>
           <div>{val.To}</div>
-        </div>;
-      })}
+        </div>
+      ))}
     </div>
   );
 }

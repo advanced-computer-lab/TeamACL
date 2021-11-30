@@ -67,7 +67,7 @@ function SearchFlight() {
         .get(`http://localhost:3000/api/v1/flights/`, body)
         .then((res) => setS(res.data))
         .catch((err) => console.log(err));
-      //setU(false);
+      setU(false);
     }
   }, [U]);
   function sub() {

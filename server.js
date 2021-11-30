@@ -6,11 +6,7 @@ const app = require("./app");
 const DB = process.env.DATABASE;
 
 mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  })
+  .connect(DB, { useNewUrlParser: true, useUnifiedTopology: true})
   .then((con) => {
     console.log("DB conn success");
   });
