@@ -3,11 +3,14 @@ const flightController = require("./../controllers/flightController");
 
 const router = express.Router();
 
+router.route("/departure-flights").get(flightController.getDepartureFlights);
+router.route("/return-flights").get(flightController.getReturnFlights);
+
+router.route("/findFlight").post(flightController.getFlight);
 router
   .route("/")
-  .get(flightController.getAllFlights)
-  .post(flightController.getFlight)
-  .post(flightController.createFLight);
+  .post(flightController.createFLight)
+  .get(flightController.getAllFlights);
 
 router
   .route("/:id")

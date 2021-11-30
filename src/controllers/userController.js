@@ -15,3 +15,23 @@ exports.createUser = async (req, res) => {
     });
   }
 };
+
+exports.updateUser = async (req, res) => {
+  console.log(req.body);
+  try {
+    const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
+      new: true,
+    });
+    res.status(200).json({
+      status: "success",
+      data: {
+        User: updatedUser,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};

@@ -35,6 +35,46 @@ exports.getFlight = async (req, res) => {
     });
   }
 };
+
+exports.getDepartureFlights = async (req, res) => {
+  try {
+    const flight = await Flight.find({
+      TypeOfFlight: "Departure",
+    });
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        flight,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
+
+exports.getReturnFlights = async (req, res) => {
+  try {
+    const flight = await Flight.find({
+      TypeOfFlight: "Return",
+    });
+    res.status(200).json({
+      status: "success",
+      data: {
+        flight,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
+
 exports.getSelectedFlight = async (req, res) => {
   //for displaying the selected flight whether its a departure or its a return one.
   try {
