@@ -24,7 +24,14 @@ exports.getFlight =  (req, res) => {
 
   try {
    
-    const flight =  Flight.find(req.body);
+    const flight =  Flight.find(
+      req.body
+      
+      
+      
+      
+      
+      );
     if(flight==null){
       console.log("no such flight")
     }
