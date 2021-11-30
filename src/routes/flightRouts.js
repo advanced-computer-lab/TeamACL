@@ -3,7 +3,7 @@ const flightController = require("./../controllers/flightController");
 
 const router = express.Router();
 router
-  .route("/search-flight")
+  .route("/findFlight")
   .get(flightController.getFlight);
 router
   .route("/")

@@ -62,8 +62,10 @@ function SearchFlight() {
       console.log(body);
       
       axios
-        .post(`http://localhost:8000/api/v1/flights/search-flight`, body)
-        .then((res) => setS(res.data))
+        .get(`http://localhost:3000/api/v1/flights`, body)
+        .then((res) => {setS(res.data.data.flights)
+          console.log(res)
+        })
         .catch((err) => console.log(err));
       setU(false);
     }
