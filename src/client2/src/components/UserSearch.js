@@ -60,13 +60,14 @@ function SearchFlight() {
       if (Class !== "") {
         body["Class"] = Class;
       }
+      
       console.log("from frontend");
       console.log(body);
       axios
         .get(`http://localhost:3000/api/v1/flights/`, body)
         .then((res) => setS(res.data))
         .catch((err) => console.log(err));
-      setU(false);
+      //setU(false);
     }
   }, [U]);
   function sub() {
@@ -173,7 +174,7 @@ function SearchFlight() {
           onChange={(event) => setClass(event.target.value)}
         />
         <p><br></br> </p>
-        
+
         <button type="Update Flight" value="Update Flight" onClick={sub}>
           Search flight{" "}
         </button>
@@ -181,14 +182,17 @@ function SearchFlight() {
 
       {S.map((val) => {
         <div>
+          <div>{val.FlightType}</div>  
           <div>{val.FlightNumber}</div>
           <div>{val.DepartureTime}</div>
           <div>{val.ArrivalTime}</div>
           <div>{val.DateOfFlight}</div>
-          <div>{val.NumberOfEconomySeats}</div>
-          <div>{val.NumberOfBusinessSeats}</div>
           <div>{val.From}</div>
           <div>{val.To}</div>
+          <div>{val.Price}</div>
+          <div>{val.TripDuration}</div>
+          <div>{val.Class}</div>
+          <div>{val.NumberOfPassengers}</div>
         </div>;
       })}
     </div>

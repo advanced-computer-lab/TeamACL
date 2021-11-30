@@ -31,7 +31,6 @@ const ViewFlight = ({
   return (
     <div>
       <button onClick={ClickHandler}> ~ Add New Flight</button>
-
       <button onClick={ClickHandler2}>~ view all Flights</button>
       <button onClick={ClickHandler4}>~ view departure flights</button>
       <button onClick={ClickHandler5}>~ Profile</button>

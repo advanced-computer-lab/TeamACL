@@ -18,11 +18,20 @@ exports.getAllFlights = async (req, res) => {
   }
 };
 
-exports.getFlight = async (req, res) => {
+exports.getFlight =  (req, res) => {
+ // console.log(req)
+  console.log(req.body)
+
   try {
-    const flight = await Flight.find(req.body);
+   
+    const flight =  Flight.find(req.body);
+    if(flight==null){
+      console.log("no such flight")
+    }
+    console.log(flight)
     res.status(200).json({
       status: "success",
+      
       data: {
         flight,
       },

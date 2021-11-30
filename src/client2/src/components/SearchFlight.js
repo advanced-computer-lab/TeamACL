@@ -2,9 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
+const bodyParser = require('body-parser')
+
 
 function SearchFlight() {
-  <h1>Search</h1>
+  
   const [FlightNumber, setFlightNumber] = useState();
   const [DepartureTime, setDepartureTime] = useState();
   const [ArrivalTime, setArrivalTime] = useState();
@@ -58,12 +60,14 @@ function SearchFlight() {
       }
       console.log("from frontend");
       console.log(body);
+      
       axios
-        .get(`http://localhost:3000/api/v1/flights/`, body)
+        .post(`http://localhost:8000/api/v1/flights/search-flight`, body)
         .then((res) => setS(res.data))
         .catch((err) => console.log(err));
       setU(false);
     }
+    
   }, [U]);
   function sub() {
     setU(true);

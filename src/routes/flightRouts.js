@@ -2,20 +2,18 @@ const express = require("express");
 const flightController = require("./../controllers/flightController");
 
 const router = express.Router();
-
+router
+  .route("/search-flight")
+  .get(flightController.getFlight);
 router
   .route("/")
   .get(flightController.getAllFlights)
-  .post(flightController.getFlight)
+  
   .post(flightController.createFLight);
 
 router
   .route("/:id")
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
-
-router
-  .route("/View-Departure_Details")
-  .put(flightController.ViewDepartureFlight);
 
 module.exports = router;

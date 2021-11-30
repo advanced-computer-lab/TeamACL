@@ -4,7 +4,7 @@ const mongoose = require('mongoose');
 const userController = require('./Routes/userController');
 // THIS IS WRONG NEVER DO THAT !! Only for the task we put the DB Link here!! NEVER DO THAAAT AGAIN !!
 const MongoURI =  'mongodb+srv://nadahesham:test1234@cluster0.5uvnx.mongodb.net/myFirstDatabase?retryWrites=true&w=majority' ;
-
+const obj={};
 
 //App variables
 const app = express();
@@ -33,7 +33,10 @@ app.get('/get-all-users/:name', userController.getUser)
 app.put('/update-user/:id',userController.updateUser)
 app.delete('/delete-user/:id',userController.deleteUser)                                    
 
-
+app.post('/getflight',(req,res)=>{
+obj['FlightNumber']= req.body.FlightNumber
+console.log(obj)
+})
 // Starting server
 app.listen(port, () => {
     console.log(`Listening to requests on http://localhost:${port}`);
