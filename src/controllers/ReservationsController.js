@@ -3,7 +3,8 @@ const Reserve = require("./../models/Reservations");
 
 exports.createReservation = async (req, res) => {
   try {
-    const reservation = await Reserve.create(req.params);
+    const reservation = await Reserve.create(req.body);
+    console.log(req.body);
     res.status(200).json({
       status: "success",
       data: {
@@ -20,10 +21,11 @@ exports.createReservation = async (req, res) => {
 
 exports.getReservation = async (req, res) => {
   try {
-    const UserId = req.params.userId;
-    const FlightId = req.params.flightId;
+    const UserId = req.query.UserID;
+    const FlightId = req.query.FlightId;
+    console.log(UserId, FlightId);
     const reservation = await Reserve.find({
-      UserId: UserId,
+      UserID: UserId,
       FlightId: FlightId,
     });
     res.status(200).json({
@@ -42,9 +44,12 @@ exports.getReservation = async (req, res) => {
 
 exports.canceleReservation = async (req, res) => {
   try {
-    const FlightId = req.params.flightId;
-    const UserId = req.params.userId;
-    const reservation = await findByIdAndDelete(FlightId, UserId);
+    const UserId = req.query.UserID;
+    const FlightId = req.query.FlightId;
+    const reservation = await findByIdAndDelete({
+      UserID: UserId,
+      FlightId: FlightId,
+    });
     res.status(200).json({
       status: "success",
       data: flight,

@@ -2,6 +2,7 @@ const User = require("../models/User");
 exports.createUser = async (req, res) => {
   try {
     const newUser = await User.create(req.body);
+    console.log(req.body);
     res.status(201).json({
       status: "success",
       data: {

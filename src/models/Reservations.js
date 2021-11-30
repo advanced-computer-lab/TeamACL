@@ -13,3 +13,6 @@ const Reservation = mongoose.Schema({
     required: true,
   },
 });
+
+const Reserve = mongoose.model("Reserve", Reservation);
+module.exports = Reserve;
