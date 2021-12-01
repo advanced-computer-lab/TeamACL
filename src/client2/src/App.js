@@ -15,6 +15,7 @@ import Nav from "./components/Nav";
 import UserNav from "./components/UserNav";
 import UserSearch from "./components/UserSearch";
 import Home from "./components/Home";
+import MoreDetailsDep from "./components/MoreDetailsDep";
 import Admin from "./components/Admin";
 //import { Router } from "express";
 
@@ -50,6 +51,8 @@ const App = () =>  {
          <Route path = "/UserNav" element = {<UserNav/>} />
          <Route path = "/ViewDepartureDetails" element = {<ViewDepartureDetails/>} />
          <Route path = "/Admin" element = {<Admin/>} />
+         <Route path = "/UserSearch" element = {<UserSearch/>} />
+         <Route path = "/MoreDetailsDep" element = {<MoreDetailsDep/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>

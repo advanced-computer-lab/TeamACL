@@ -2,201 +2,143 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
+import MoreDetailsDep from "./MoreDetailsDep";
+const bodyParser = require('body-parser')
 
-function SearchFlight() {
-    
-  const [FlightType, setFlightType] = useState();
-  const [FlightNumber, setFlightNumber] = useState();
-  const [DepartureTime, setDepartureTime] = useState();
-  const [ArrivalTime, setArrivalTime] = useState();
-  const [DateOfFlight, setDateOfFlight] = useState();
-  const [Airport, setAirport] = useState();
-  const [AirportTerminals, setAirportTerminals] = useState();
-  const [From, setFrom] = useState();
-  const [To, setTo] = useState();
-  const [Price, setPrice] = useState();
-  const [TripDuration, setTripDuration] = useState();
-  const [Class, setClass] = useState();
- 
+
+function UserSearch() {
+  const [Flag, setFlag]= useState();
+  const [DepartureDate, setDepartureDate] = useState();
+  const [ArrivalDate, setArrivalDate] = useState();
+  const [NumberOfPassengers, setNumberOfPassengers] = useState();
+  const [DepartureAirportTerminal, setDepartureAirportTerminal] = useState();
+  const [ArrivalAirportTerminal, setArrivalAirportTerminal] = useState();
+  const [Cabin, setCabin] = useState();
+
   const [U, setU] = useState(false);
   const [S, setS] = useState([]);
 
-  useEffect(() => {
-    if (U) {
-      const body = {};
-      if (FlightType !== "") {
-        body["FlightType"] = FlightType;
-      }
-      if (FlightNumber !== "") {
-        body["FlightNumber"] = FlightNumber;
-      }
-      if (DepartureTime !== "") {
-        body["DepartureTime"] = DepartureTime;
-      }
-      if (ArrivalTime !== "") {
-        body["ArrivalTime"] = ArrivalTime;
-      }
-      if (DateOfFlight !== "") {
-        body["DateOfFlight"] = DateOfFlight;
-      }
-      if (Airport !== "") {
-        body["Airport"] = Airport;
-      }
-      if (AirportTerminals !== "") {
-        body["AirportTerminals"] = AirportTerminals;
-      }
-      if (From !== "") {
-        body["From"] = From;
-      }
-      if (To !== "") {
-        body["To"] = To;
-      }
-      if (Price !== "") {
-        body["Price"] = Price;
-      }
-      if (TripDuration !== "") {
-        body["TripDuration"] = TripDuration;
-      }
-      if (Class !== "") {
-        body["Class"] = Class;
-      }
-      
-      console.log("from frontend");
-      console.log(body);
-      axios
-        .get(`http://localhost:3000/api/v1/flights/`, body)
-        .then((res) => setS(res.data))
-        .catch((err) => console.log(err));
-      setU(false);
-    }
-  }, [U]);
   function sub() {
-    setU(true);
+    const body = {};
+      if (DepartureDate !== "") {
+        body["DepartureDate"] = DepartureDate;
+      }
+      if (ArrivalDate !== "") {
+        body["Arrivaldate"] = ArrivalDate;
+      }
+      if (NumberOfPassengers!== "") {
+        body["NumberOfPassengers"] = NumberOfPassengers;
+      }
+      if ( DepartureAirportTerminal!== "") {
+        body["DepartureAirportTerminal"] = DepartureAirportTerminal;
+      }
+      if ( ArrivalAirportTerminal!== "") {
+        body["ArrivalAirportTerminal"] =ArrivalAirportTerminal;
+      }
+      if (Cabin !== "") {
+        body["Cabin"] = Cabin;
+      }
+      console.log("from frontend user search");
+      console.log(body);
+      
+      axios
+        .post(`http://localhost:3000/api/v1/flights/findFlight`, body)
+        .then((res) => {
+          setS(res.data)
+          console.log(res.data)
+        })
+        .catch((err) => console.log("error herererere"));
   }
+  function FuncFlag() {
+    setFlag(true);
+    }
 
   return (
     <div>
-      <form>
-      <h1>userSearch</h1>
-        <label for="FlightNumber">FlightNumber:</label>
+      <form onSubmit={(e) => e.preventDefault()}>
+        <h1>Search</h1>
+        <label for="DepartureDate">DepartureDate:</label>
         <input
           type="text"
-          id="FlightNumber"
-          name="FlightNumber"
-          onChange={(event) => setFlightNumber(event.target.value)}
+          id="DepartureDate"
+          name="DepartureDate"
+          onChange={(event) => setDepartureDate(event.target.value)}
         />
-        <p>          <br></br>        </p>
-
-        <label for="DepartureTime">DepartureTime:</label>
+        <p>
+          <br></br>
+        </p>
+        <label for="ArrivalDate">ArrivalDate:</label>
         <input
           type="text"
-          id="DepartureTime"
-          name="DepartureTime"
-          onChange={(event) => setDepartureTime(event.target.value)}
-        />       <p>         <br></br>        </p>
-
-        <label for="ArrivalTime">ArrivalTime:</label>
-        <input
-          type="text"
-          id="ArrivalTime"
-          name="ArrivalTime"
-          onChange={(event) => setArrivalTime(event.target.value)}
+          id="ArrivalDate"
+          name="ArrivalDate"
+          onChange={(event) => setArrivalDate(event.target.value)}
         />
-        <p><br></br></p>
-        <label for="DateOfFlight">DateOfFlight:</label>
+        <p>
+          <br></br>
+        </p>
+        <label for="NumberOfPassengers">NumberOfPassengers:</label>
         <input
           type="text"
-          id="DateOfFlight"
-          name="DateOfFlight"
-          onChange={(event) => setDateOfFlight(event.target.value)}
+          id="NumberOfPassengers"
+          name="NumberOfPassengers"
+          onChange={(event) => setNumberOfPassengers(event.target.value)}
         />
-        <p><br></br></p>
-       
-        <label for="Airport">Airport:</label>
+        <p>
+          <br></br>
+        </p>
+        <label for="DepartureAirportTerminal">DepartureAirportTerminal:</label>
         <input
           type="text"
-          id="Airport"
-          name="Airport"
-          onChange={(event) => setAirport(event.target.value)}
+          id="DepartureAirportTerminal"
+          name="DepartureAirportTerminal"
+          onChange={(event) => setDepartureAirportTerminal(event.target.value)}
         />
-        <p><br></br></p>
-
-        <label for="AirportTerminals">AirportTerminals:</label>
+        <p>
+          <br></br>
+        </p>
+        <label for="ArrivalAirportTerminal">ArrivalAirportTerminal:</label>
         <input
           type="text"
-          id="AirportTerminals"
-          name="AirportTerminals"
-          onChange={(event) => setAirportTerminals(event.target.value)}
+          id="ArrivalAirportTerminal"
+          name="ArrivalAirportTerminal"
+          onChange={(event) => setArrivalAirportTerminal(event.target.value)}
         />
-        <p><br></br></p>
-
-        <label for="From">From:</label>
+        <p>
+          <br></br>
+        </p>
+        <label for="Cabin">Cabin:</label>
         <input
           type="text"
-          id="From"
-          name="From"
-          onChange={(event) => setFrom(event.target.value)}
+          id="Cabin"
+          name="Cabin"
+          onChange={(event) => setCabin(event.target.value)}
         />
-        <p> <br></br></p>
-
-        <label for="To">To:</label>
-        <input
-          type="text"
-          id="To"
-          name="To"
-          onChange={(event) => setTo(event.target.value)}
-        />
-        <p><br></br></p>
-
-        <label for="Price">Price:</label>
-        <input
-          type="text"
-          id="Price"
-          name="Price"
-          onChange={(event) => setPrice(event.target.value)}
-        />
-        <p><br></br></p>
-
-        <label for="TripDuration">TripDuration:</label>
-        <input
-          type="text"
-          id="TripDuration"
-          name="TripDuration"
-          onChange={(event) => setTripDuration(event.target.value)}
-        />
-        <p> <br></br></p>
-
-        <label for="Class">Class:</label>
-        <input
-          type="text"
-          id="Class"
-          name="Class"
-          onChange={(event) => setClass(event.target.value)}
-        />
-        <p><br></br> </p>
-
+        <p>
+          <br></br>
+        </p>
         <button type="Update Flight" value="Update Flight" onClick={sub}>
           Search flight{" "}
         </button>
       </form>
-
-      {S.map((val) => {
-        <div>
-          <div>{val.FlightType}</div>  
-          <div>{val.FlightNumber}</div>
-          <div>{val.DepartureTime}</div>
-          <div>{val.ArrivalTime}</div>
-          <div>{val.DateOfFlight}</div>
-          <div>{val.From}</div>
-          <div>{val.To}</div>
-          <div>{val.Price}</div>
-          <div>{val.TripDuration}</div>
-          <div>{val.Class}</div>
-          <div>{val.NumberOfPassengers}</div>
-        </div>;
-      })}
+      
+      {S.map((val) => (
+        <div key={val._id}>
+          <div><label for="DepartureDate"> Departure Date: </label>{val.DepartureDate}</div>
+          <div><label for="ArrivalDate">Arrival Date: </label>{val.ArrivalDate}</div>
+          <div><label for="NumberOfPassengers"> Number Of Passengers: </label>{val.NumberOfPassengers}</div>
+          <div><label for="DepartureAirportTerminal">Departure Airport Terminal: </label>{val.DepartureAirportTerminal}</div>
+          <div><label for="ArrivalAirportTerminal">Arrival Airport Terminal: </label>{val.ArrivalAirportTerminal}</div>
+          <div><label for="Cabin">Cabin: </label>{val.Cabin}</div>
+          <button onClick={FuncFlag}>Choose </button>
+          {Flag ? <MoreDetailsDep id={val.id} /> : <></>}
+          
+            </div>
+            
+       
+      ))}
     </div>
   );
 }
 
-export default SearchFlight;
+export default UserSearch;

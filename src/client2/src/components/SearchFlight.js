@@ -2,7 +2,11 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
+import MoreDetailsDep from "./MoreDetailsDep"; 
+import {useNavigate} from 'react-router-dom';
+//import { setFlagsFromString } from "v8";
 const bodyParser = require('body-parser')
+
 
 
 function SearchFlight() {
@@ -18,6 +22,7 @@ function SearchFlight() {
   const [AirportTerminals, setAirportTerminals] = useState();
   const [From, setFrom] = useState();
   const [To, setTo] = useState();
+  const[Flag,setFlag] = useState();
 
   const [U, setU] = useState(false);
   const [S, setS] = useState([]);
@@ -76,6 +81,10 @@ function SearchFlight() {
         })
         .catch((err) => console.log("error herererere"));
   }
+  const navigate = useNavigate();
+  function FuncFlag(){
+    setFlag(true);
+  }
 
   return (
     <div>
@@ -121,7 +130,7 @@ function SearchFlight() {
         <p>
           <br></br>
         </p>
-        <label for="NumberOfEconomySeats">NumberOfEconomySeats:</label>
+        {/* <label for="NumberOfEconomySeats">NumberOfEconomySeats:</label>
         <input
           type="text"
           id="NumberOfEconomySeats"
@@ -130,8 +139,8 @@ function SearchFlight() {
         />
         <p>
           <br></br>
-        </p>
-        <label for="NumberOfBusinessSeats">NumberOfBusinessSeats:</label>
+        </p> */}
+        {/* <label for="NumberOfBusinessSeats">NumberOfBusinessSeats:</label>
         <input
           type="text"
           id="NumberOfBusinessSeats"
@@ -140,8 +149,8 @@ function SearchFlight() {
         />
         <p>
           <br></br>
-        </p>
-        <label for="NumberOfFirstSeats">NumberOfFirstSeats:</label>
+        </p> */}
+        {/* <label for="NumberOfFirstSeats">NumberOfFirstSeats:</label>
         <input
           type="text"
           id="NumberOfFirstSeats"
@@ -150,7 +159,7 @@ function SearchFlight() {
         />
         <p>
           <br></br>
-        </p>
+        </p> */}
         <label for="Airport">Airport:</label>
         <input
           type="text"
@@ -198,14 +207,18 @@ function SearchFlight() {
 
       {S.map((val) => (
         <div key={val._id}>
-          <div>{val.FlightNumber}</div>
-          <div>{val.DepartureTime}</div>
-          <div>{val.ArrivalTime}</div>
-          <div>{val.DateOfFlight}</div>
-          <div>{val.NumberOfEconomySeats}</div>
-          <div>{val.NumberOfBusinessSeats}</div>
-          <div>{val.From}</div>
-          <div>{val.To}</div>
+          <div><label for="FlightNumber">Flight Number: </label>{val.FlightNumber}</div>
+          <div><label for="DepartureTime">Departure Time: </label>{val.DepartureTime}</div>
+          <div><label for="ArrivalTime">Arrival Time: </label>{val.ArrivalTime}</div>
+          <div><label for="DateOfFlight">Date Of Flight: </label>{val.DateOfFlight}</div>
+          <div><label for="AirportTerminals">Airport Terminals: </label>{val.AirportTerminals}</div>
+          {/* <div>{val.NumberOfEconomySeats}</div>
+          <div>{val.NumberOfBusinessSeats}</div> */}
+          <div><label for="From">From: </label>{val.From}</div>
+          <div><label for="To">To: </label>{val.To}</div>
+        
+          <button onClick={FuncFlag}>Choose </button>
+          {Flag ? <MoreDetailsDep Ifd={val.FlightNumber} /> : <></>}
         </div>
       ))}
     </div>
