@@ -11,6 +11,9 @@ return (
             <Link to="/UserNav">
             <li>User</li>
             </Link>
+            <Link to ="/EditProfile">
+                <li> Edit Profile</li>
+                </Link>
 
         </u1>
     </nav>

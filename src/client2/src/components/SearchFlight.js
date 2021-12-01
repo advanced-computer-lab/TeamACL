@@ -1,6 +1,6 @@
 import React from 'react'
-import {input } from 'antd';
-const {search} = Input;
+// import {input } from 'antd';
+// const {search} = Input;
 
 function SearchFlight()
 {
