@@ -17,6 +17,10 @@ import UserSearch from "./components/UserSearch";
 import Home from "./components/Home";
 import MoreDetailsDep from "./components/MoreDetailsDep";
 import Admin from "./components/Admin";
+import EditProfile from "./components/EditProfile";
+import ViewProfile from "./components/ViewProfile";
+
+
 //import { Router } from "express";
 
 
@@ -45,6 +49,10 @@ const App = () =>  {
       <div>
         
           <Routes>
+            <Route path = "/ViewProfile" element = {<ViewProfile/>}/>
+          <Route path = "/EditProfile" element = {<EditProfile/>}/>
+
+          
          <Route path = "/CreateFlight" element = {<CreateFlight/>} />
          <Route path = "/ViewAllFlights" element = {<ViewAllFlights/>} />
          <Route path = "/SearchFlight" element = {<SearchFlight/>} />

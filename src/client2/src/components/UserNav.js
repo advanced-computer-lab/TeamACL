@@ -12,6 +12,13 @@ return (
             <li>Search Flight</li>
             </Link>
             
+            <Link to="/ViewProfile">
+            <li>View Profile</li>
+            </Link>
+
+            <Link to="/EditProfile">
+            <li>Edit Profile</li>
+            </Link>
 
         </u1>
     </nav>
