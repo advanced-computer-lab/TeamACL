@@ -52,7 +52,7 @@ const App = () =>  {
          <Route path = "/ViewDepartureDetails" element = {<ViewDepartureDetails/>} />
          <Route path = "/Admin" element = {<Admin/>} />
          <Route path = "/UserSearch" element = {<UserSearch/>} />
-         <Route path = "/MoreDetailsDep" element = {<MoreDetailsDep/>} />
+         <Route path = "/MoreDetailsDep/:Ifd" element = {<MoreDetailsDep/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>

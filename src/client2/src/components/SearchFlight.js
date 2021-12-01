@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
 import MoreDetailsDep from "./MoreDetailsDep"; 
-import {useNavigate} from 'react-router-dom';
+import {useNavigate, Navigate} from 'react-router-dom';
 //import { setFlagsFromString } from "v8";
 const bodyParser = require('body-parser')
 
@@ -81,10 +81,12 @@ function SearchFlight() {
         })
         .catch((err) => console.log("error herererere"));
   }
-  const navigate = useNavigate();
+  const [details, setDetails] = useState(null)
+  //const navigate = useNavigate();
   function FuncFlag(){
     setFlag(true);
   }
+
 
   return (
     <div>
@@ -218,9 +220,10 @@ function SearchFlight() {
           <div><label for="To">To: </label>{val.To}</div>
         
           <button onClick={FuncFlag}>Choose </button>
-          {Flag ? <MoreDetailsDep Ifd={val.FlightNumber} /> : <></>}
+          {Flag ? <Navigate to={`/MoreDetailsDep/${val.FlightNumber}`} /> : <></>}
         </div>
       ))}
+      {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
     </div>
   );
 }
