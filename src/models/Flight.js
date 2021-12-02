@@ -9,8 +9,15 @@ const flightSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-
   ArrivalTime: {
+    type: String,
+    required: true,
+  },
+  DepartureDate: {
+    type: String,
+    required: true,
+  },
+  ArrivalDate: {
     type: String,
     required: true,
   },
@@ -38,7 +45,11 @@ const flightSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  AirportTerminals: {
+  DepartureTerminals: {
+    type: String,
+    required: true,
+  },
+  ArrivalTerminals: {
     type: String,
     required: true,
   },
@@ -59,6 +70,10 @@ const flightSchema = mongoose.Schema({
     required: true,
   },
   TypeOfFlight: {
+    type: String,
+    required: true,
+  },
+  Cabin: {
     type: String,
     required: true,
   },
