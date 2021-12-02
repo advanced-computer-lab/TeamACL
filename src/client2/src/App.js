@@ -3,18 +3,19 @@ import ViewFlight from './components/ViewFlight'
 import CreateFlight from './components/CreateFlight';
 import UpdateFlight from './components/UpdateFlight';
 import Delete from './components/Delete';
+import ViewReservedFlights from './components/ViewReservedFlights';
 
-
+import { useState, useEffect } from 'react';
 import axios from "axios";
 // import UserCard from "../components/UserCard";
 // import Grid from '@mui/material/Grid';
-import { useState, useEffect } from 'react';
+
 const {route,port} = require('./base')
 export default function App() {
 const [showCreateForm,setShowCreateForm] = useState(false);
 const [showList,setShowList] = useState(false);
 const [showUpdateForm,setShowUpdateForm] = useState(false); 
-const [showSearchForm,setShowSearchForm] = useState(false);
+const [showviewForm,setShowviewForm] = useState(false);
 const [showDeleteForm,setShowDeleteForm] = useState(false);
 //const [list1,setList1] = useState([]);
 
@@ -46,11 +47,17 @@ function handleUpdate(){
 //patch
 setShowUpdateForm(true);
 }
+function handleView(){
+  //patch
+  setShowviewForm(true);
+  }
     
 return (
   <>
-  <ViewFlight setShowCreateForm={setShowCreateForm} setShowList={setShowList} setShowUpdateForm={setShowUpdateForm} setShowDeleteForm={setShowDeleteForm} />
+  <ViewFlight setShowCreateForm={setShowCreateForm} setShowList={setShowList} setShowUpdateForm={setShowUpdateForm} setShowDeleteForm={setShowDeleteForm} setShowviewForm={setShowviewForm} />
   {showCreateForm? <CreateFlight/>:<></>}
+  {<button onClick={handleView}> ~vieww Flight </button>}
+  {showviewForm? <ViewReservedFlights/>:<></>}
   
   {showList? list.map(a =>{return <div>
     
