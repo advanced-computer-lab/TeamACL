@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import UserSearch from "./UserSearch";
+import ViewReservedFlights from "./ViewReservedFlights";
+
 
 function UserNav(){
 return (
@@ -10,6 +12,9 @@ return (
        
             <Link to="/Usersearch">
             <li>Search Flight</li>
+            </Link>
+            <Link to="/ViewReservedFlights">
+            <li>View Reserved Flights</li>
             </Link>
             
             <Link to="/ViewProfile">

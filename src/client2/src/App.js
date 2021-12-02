@@ -14,12 +14,14 @@ import { useHistory } from 'react-router-dom';
 import Nav from "./components/Nav";
 import UserNav from "./components/UserNav";
 import UserSearch from "./components/UserSearch";
+import ViewReservedFlights from "./components/ViewReservedFlights";
 import Home from "./components/Home";
 import MoreDetailsDep from "./components/MoreDetailsDep";
 import Admin from "./components/Admin";
 import EditProfile from "./components/EditProfile";
 import ViewProfile from "./components/ViewProfile";
 
+import GuestUser from "./components/GuestUser";
 
 //import { Router } from "express";
 
@@ -61,6 +63,8 @@ const App = () =>  {
          <Route path = "/Admin" element = {<Admin/>} />
          <Route path = "/UserSearch" element = {<UserSearch/>} />
          <Route path = "/MoreDetailsDep/:Ifd" element = {<MoreDetailsDep/>} />
+         <Route path = "/ViewReservedFlights" element = {<ViewReservedFlights/>} />
+         <Route path = "/GuestUser" element = {<GuestUser/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>
