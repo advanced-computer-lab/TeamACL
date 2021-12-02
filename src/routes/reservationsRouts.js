@@ -10,7 +10,10 @@ router
   .route("/:UserId/:FlightId/:FlightNumber")
   .get(reserveController.getReservation);
 
-router.route("/").post(reserveController.createReservation);
+// UserEmail/:UserId/:FlightId
+router
+  .route("/:UserEmail/:UserId/:FlightId/:FlightNumber")
+  .post(reserveController.createReservation);
 
 router.route("/:id").delete(reserveController.canceleReservation);
 

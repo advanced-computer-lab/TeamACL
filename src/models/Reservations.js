@@ -16,8 +16,12 @@ const Reservation = mongoose.Schema({
     type: Number,
     required: true,
   },
-  SeatNumber: {
+  ChosenCabin: {
     type: String,
+    required: true,
+  },
+  NumberOfSeats: {
+    type: Number,
     required: true,
   },
 });
