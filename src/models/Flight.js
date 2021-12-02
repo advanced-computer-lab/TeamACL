@@ -5,6 +5,7 @@ const flightSchema = mongoose.Schema({
     required: true,
   },
   DepartureTime: {
+  
     type: String,
     required: true,
   },
@@ -19,14 +20,18 @@ const flightSchema = mongoose.Schema({
     required: true,
   },
   NumberOfEconomySeats: {
+    
+    
     type: Number,
     required: true,
   },
   NumberOfBusinessSeats: {
+    
     type: Number,
     required: true,
   },
   NumberOfFirstSeats: {
+   
     type: Number,
     required: true,
   },

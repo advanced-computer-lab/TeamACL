@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import UserSearch from "./UserSearch";
-import ViewReservedFlights from './ViewReservedFlights';
+import ViewReservedFlights from "./ViewReservedFlights";
 
 
 function UserNav(){

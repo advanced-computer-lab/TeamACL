@@ -9,14 +9,18 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
+import CancelReservation from './CancelReservation';
 
-export default function ViewReservedFlights() {
-    const [list,setList] = useState([]);
+const ViewReservedFlights = () =>  {
+  const [showCancelForm, setShowCancelForm] = useState(false);  
+  const [list,setList] = useState([]);
     useEffect(()=>{
   axios.get(`http://localhost:3000/api/v1/flights`)
     .then(res => {
       // console.log("frontend");
-      // console.log(res.data.data.flights);
+      console.log(res.data.data.flights);
       setList(res.data.data.flights);
     }).catch(err => console.log(err))
 
@@ -40,6 +44,7 @@ return (
           <TableCell align="right">AirportTerminals</TableCell>
           <TableCell align="right">From</TableCell>
           <TableCell align="right">To</TableCell>
+          <TableCell align="right"></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -63,11 +68,15 @@ return (
             <TableCell align="right">{row.AirportTerminals}</TableCell>
             <TableCell align="right">{row.From}</TableCell>
             <TableCell align="right">{row.To}</TableCell>
+            <TableCell align="right">  <CancelReservation id={row._id} />
+            </TableCell>
           </TableRow>
-        ))}
+        ))
+       
+        }
       </TableBody>
     </Table>
   </TableContainer>
 );
 }
-//export default ViewReservedFlights
+export default ViewReservedFlights
