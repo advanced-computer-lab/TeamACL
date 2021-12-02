@@ -4,7 +4,7 @@ const Reservation = mongoose.Schema({
     type: String,
     required: true,
   },
-  UserID: {
+  UserId: {
     type: String,
     required: true,
   },
@@ -13,7 +13,7 @@ const Reservation = mongoose.Schema({
     required: true,
   },
   FlightNumber: {
-    type: String,
+    type: Number,
     required: true,
   },
   SeatNumber: {

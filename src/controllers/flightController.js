@@ -79,7 +79,7 @@ exports.getSelectedFlight = async (req, res) => {
   //for displaying the selected flight whether its a departure or its a return one.
   try {
     const flight = await Flight.findById(req.params.id); // el (req.params.id) el mafrood btgeeb el flight by id --> asbha req.params.id zi ma hya wala m7tag a8yraha
-    console.log(req.param);
+    console.log(req.params);
     res.status(200).json({
       status: "success",
       data: {

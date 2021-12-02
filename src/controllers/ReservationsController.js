@@ -22,12 +22,15 @@ exports.createReservation = async (req, res) => {
 
 exports.getReservation = async (req, res) => {
   try {
-    const UserId = req.query.UserID;
-    const FlightId = req.query.FlightId;
-    console.log(UserId, FlightId);
+    const UserId = req.params.UserId;
+    const FlightId = req.params.FlightId;
+    const FlightNumber = req.params.FlightNumber;
+    console.log(req.params);
+    console.log(UserId, FlightId, FlightNumber);
     const reservation = await Reserve.find({
-      UserID: UserId,
+      UserId: UserId,
       FlightId: FlightId,
+      FlightNumber: FlightNumber,
     });
     res.status(200).json({
       status: "success",
