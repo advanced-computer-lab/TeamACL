@@ -19,7 +19,9 @@ const ViewAllFlights = () =>   {
   const [ShowSelecteDepartureForm,setShowSelecteDepartureForm] = useState(false);
   const [showUserSearchForm , setShowUserSearchForm] = useState(false);
   const [test, setTest]= useState(false);
-
+  const [DepartureTerminals, setDepartureTerminals] = useState(false);
+  const [ArrivalTerminals, setArrivalTerminals] = useState(false);
+  //const [Type, setFlightType]= useState(false);
   function handleUpdate() {
       setShowUpdateForm(true);
     }
@@ -59,20 +61,50 @@ const ViewAllFlights = () =>   {
           <label for="NumberOfBusinessSeats"> NumberOfBusinessSeats:</label>
           <label>{a.NumberOfBusinessSeats}</label>
 
-          <label for="NumberOfFirstSeats"> NumberOfFirstSeats:</label>
-          <label>{a.NumberOfFirstSeats}</label>
+          <label for="NumberOfFirstClassSeats"> NumberOfFirstClassSeats:</label>
+          <label>{a.NumberOfFirstClassSeats}</label>
 
           <label for="Airport"> Airport:</label>
           <label>{a.Airport}</label>
 
-          <label for="AirportTerminals"> AirportTerminals:</label>
-          <label>{a.AirportTerminals}</label>
+          <label for="DepartureTerminals"> DepartureTerminals:</label>
+          <label>{a.DepartureTerminals}</label>
+
+          <label for="ArrivalTerminals"> ArrivalTerminals:</label>
+          <label>{a.ArrivalTerminals}</label>
 
           <label for="From"> From:</label>
           <label>{a.From}</label>
 
           <label for="To"> To:</label>
           <label>{a.To}</label>
+
+          <label for="ArrivalDate"> ArrivalDate:</label>
+          <label>{a.ArrivalDate}</label>
+         
+          <label for="DepartureDate"> Departure Date:</label>
+          <label>{a.DepartureDate}</label>
+
+          <label for="FlightType"> Flight Type:</label>
+          <label>{a.TypeOfFlight}</label>
+
+          <label for="DurationInHrs"> Duration:</label>
+          <label>{a.DurationInHrs}</label>
+
+          <label for="TotalTicketPrice"> Ticket Price:</label>
+          <label>{a.TotalTicketPrice}</label>
+
+          <label for="BaggageAllowance"> Baggage Allowance:</label>
+          <label>{a.BaggageAllowance}</label>
+
+          <label for="Cabin"> Cabin:</label>
+          <label>{a.Cabin}</label>
+
+          <label for="NumberOfPassengers"> NumberOfPassengers:</label>
+          <label>{a.NumberOfPassengers}</label>
+
+
+
           <p>
             <br></br>
           </p>

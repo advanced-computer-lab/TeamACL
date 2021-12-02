@@ -13,7 +13,18 @@ const flightSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-
+  DepartureDate: {
+    type:String,
+    required: true,
+  },
+  ArrivalDate: {
+    type:String,
+    required: true,
+  },
+  DurationInHrs:{
+    type:Number,
+    required: true,
+  },
   DateOfFlight: {
     type: String,
     required: true,
@@ -26,7 +37,7 @@ const flightSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  NumberOfFirstSeats: {
+  NumberOfFirstClassSeats: {
     type: Number,
     required: true,
   },
@@ -34,10 +45,19 @@ const flightSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  AirportTerminals: {
+  DepartureTerminals: {
+  type: String,
+  required: true,
+  },
+  ArrivalTerminals: {
     type: String,
     required: true,
-  },
+    },
+
+  // AirportTerminals: {
+  //   type: String,
+  //   required: true,
+  // },
   From: {
     type: String,
     required: true,
@@ -46,6 +66,22 @@ const flightSchema = mongoose.Schema({
     type: String,
     required: true,
   },
+  TotalTicketPrice: {
+    type: Number,
+    required: true,
+    },
+    BaggageAllowance: {
+      type: Number,
+      required: true,
+      },
+      TypeOfFlight: {
+        type: String,
+        required: true,
+        },
+        Cabin: {
+          type: String,
+          required: true,
+          },
 });
 const Flight = mongoose.model("Flight", flightSchema);
 module.exports = Flight;

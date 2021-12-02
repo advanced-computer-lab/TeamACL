@@ -8,8 +8,11 @@ return (
     <nav>
         <u1 className="nav-Links">
        
-            <Link to="/Usersearch">
-            <li>Search Flight</li>
+            <Link to="/SearchFlight">
+            <li>Search Leaving Flights</li>
+            </Link>
+            <Link to="/SearchReturnFlights">
+            <li>Search returning Flights</li>
             </Link>
             
 

@@ -8,18 +8,14 @@ function Nav(){
 return (
     <nav>
         <u1 className="nav-Links">
-        {/* <button onClick={ClickHandler}> ~ Add New Flight</button>
-        <button onClick={ClickHandler2}>~ view all Flights</button>
-        <button onClick={ClickHandler4}>~ view departure flights</button>
-        <button onClick={ClickHandler5}>~ Profile</button> */}
             <Link to="/CreateFlight">
             <li>CreateFlight</li>
             </Link>
             <Link to="/ViewAllFlights">
             <li>View Flight</li>
             </Link>
-            <Link to="/SearchFlight">
-            <li>Search</li>
+            <Link to="/UserSearch">
+            <li>Admin Search</li>
             </Link>
 
         </u1>

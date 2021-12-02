@@ -6,6 +6,7 @@ import Delete from "./components/Delete";
 import SearchFlight from "./components/SearchFlight";
 import home from "./components/Home";
 import ViewDepartureDetails from './components/ViewDepartureDetails';
+import SearchReturnFlights from './components/SearchReturnFlights';
 import {Route,BrowserRouter as Router, Routes} from "react-router-dom";
 import {Link} from "react-router-dom";
 import axios from "axios";
@@ -53,6 +54,7 @@ const App = () =>  {
          <Route path = "/Admin" element = {<Admin/>} />
          <Route path = "/UserSearch" element = {<UserSearch/>} />
          <Route path = "/MoreDetailsDep/:Ifd" element = {<MoreDetailsDep/>} />
+         <Route path = "/SearchReturnFlights" element = {<SearchReturnFlights/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>

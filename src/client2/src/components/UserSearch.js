@@ -2,43 +2,69 @@ import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
-import MoreDetailsDep from "./MoreDetailsDep";
+import MoreDetailsDep from "./MoreDetailsDep"; 
+import {useNavigate, Navigate} from 'react-router-dom';
+//import { setFlagsFromString } from "v8";
 const bodyParser = require('body-parser')
 
 
+
 function UserSearch() {
-  const [Flag, setFlag]= useState();
-  const [DepartureDate, setDepartureDate] = useState();
-  const [ArrivalDate, setArrivalDate] = useState();
-  const [NumberOfPassengers, setNumberOfPassengers] = useState();
-  const [DepartureAirportTerminal, setDepartureAirportTerminal] = useState();
-  const [ArrivalAirportTerminal, setArrivalAirportTerminal] = useState();
-  const [Cabin, setCabin] = useState();
+  
+  const [FlightNumber, setFlightNumber] = useState();
+  const [DepartureTime, setDepartureTime] = useState();
+  const [ArrivalTime, setArrivalTime] = useState();
+  const [DateOfFlight, setDateOfFlight] = useState();
+  const [NumberOfEconomySeats, setNumberOfEconomySeats] = useState();
+  const [NumberOfBusinessSeats, setNumberOfBusinessSeats] = useState();
+  const [NumberOfFirstSeats, setNumberOfFirstSeats] = useState();
+  const [Airport, setAirport] = useState();
+  const [AirportTerminals, setAirportTerminals] = useState();
+  const [From, setFrom] = useState();
+  const [To, setTo] = useState();
+  const[Flag,setFlag] = useState();
 
   const [U, setU] = useState(false);
   const [S, setS] = useState([]);
 
+
+
   function sub() {
     const body = {};
-      if (DepartureDate !== "") {
-        body["DepartureDate"] = DepartureDate;
+      if (FlightNumber !== "") {
+        body["FlightNumber"] = FlightNumber;
       }
-      if (ArrivalDate !== "") {
-        body["Arrivaldate"] = ArrivalDate;
+      if (DepartureTime !== "") {
+        body["DepartureTime"] = DepartureTime;
       }
-      if (NumberOfPassengers!== "") {
-        body["NumberOfPassengers"] = NumberOfPassengers;
+      if (ArrivalTime !== "") {
+        body["ArrivalTime"] = ArrivalTime;
       }
-      if ( DepartureAirportTerminal!== "") {
-        body["DepartureAirportTerminal"] = DepartureAirportTerminal;
+      if (DateOfFlight !== "") {
+        body["DateOfFlight"] = DateOfFlight;
       }
-      if ( ArrivalAirportTerminal!== "") {
-        body["ArrivalAirportTerminal"] =ArrivalAirportTerminal;
+      if (NumberOfEconomySeats !== "") {
+        body["NumberOfEconomySeats"] = NumberOfEconomySeats;
       }
-      if (Cabin !== "") {
-        body["Cabin"] = Cabin;
+      if (NumberOfBusinessSeats !== "") {
+        body["NumberOfBusinessSeats"] = NumberOfBusinessSeats;
       }
-      console.log("from frontend user search");
+      if (NumberOfFirstSeats !== "") {
+        body["NumberOfFirstSeats"] = NumberOfFirstSeats;
+      }
+      if (Airport !== "") {
+        body["Airport"] = Airport;
+      }
+      if (AirportTerminals !== "") {
+        body["AirportTerminals"] = AirportTerminals;
+      }
+      if (From !== "") {
+        body["From"] = From;
+      }
+      if (To !== "") {
+        body["To"] = To;
+      }
+      console.log("from frontend");
       console.log(body);
       
       axios
@@ -49,70 +75,123 @@ function UserSearch() {
         })
         .catch((err) => console.log("error herererere"));
   }
-  function FuncFlag() {
+  const [details, setDetails] = useState(null)
+  //const navigate = useNavigate();
+  function FuncFlag(){
     setFlag(true);
-    }
+  }
+
 
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
         <h1>Search</h1>
-        <label for="DepartureDate">DepartureDate:</label>
+        <label for="FlightNumber">FlightNumber:</label>
         <input
           type="text"
-          id="DepartureDate"
-          name="DepartureDate"
-          onChange={(event) => setDepartureDate(event.target.value)}
+          id="FlightNumber"
+          name="FlightNumber"
+          onChange={(event) => setFlightNumber(event.target.value)}
         />
         <p>
           <br></br>
         </p>
-        <label for="ArrivalDate">ArrivalDate:</label>
+        <label for="DepartureTime">DepartureTime:</label>
         <input
           type="text"
-          id="ArrivalDate"
-          name="ArrivalDate"
-          onChange={(event) => setArrivalDate(event.target.value)}
+          id="DepartureTime"
+          name="DepartureTime"
+          onChange={(event) => setDepartureTime(event.target.value)}
         />
         <p>
           <br></br>
         </p>
-        <label for="NumberOfPassengers">NumberOfPassengers:</label>
+        <label for="ArrivalTime">ArrivalTime:</label>
         <input
           type="text"
-          id="NumberOfPassengers"
-          name="NumberOfPassengers"
-          onChange={(event) => setNumberOfPassengers(event.target.value)}
+          id="ArrivalTime"
+          name="ArrivalTime"
+          onChange={(event) => setArrivalTime(event.target.value)}
         />
         <p>
           <br></br>
         </p>
-        <label for="DepartureAirportTerminal">DepartureAirportTerminal:</label>
+        <label for="DateOfFlight">DateOfFlight:</label>
         <input
           type="text"
-          id="DepartureAirportTerminal"
-          name="DepartureAirportTerminal"
-          onChange={(event) => setDepartureAirportTerminal(event.target.value)}
+          id="DateOfFlight"
+          name="DateOfFlight"
+          onChange={(event) => setDateOfFlight(event.target.value)}
         />
         <p>
           <br></br>
         </p>
-        <label for="ArrivalAirportTerminal">ArrivalAirportTerminal:</label>
+        {/* <label for="NumberOfEconomySeats">NumberOfEconomySeats:</label>
         <input
           type="text"
-          id="ArrivalAirportTerminal"
-          name="ArrivalAirportTerminal"
-          onChange={(event) => setArrivalAirportTerminal(event.target.value)}
+          id="NumberOfEconomySeats"
+          name="NumberOfEconomySeats"
+          onChange={(event) => setNumberOfEconomySeats(event.target.value)}
+        />
+        <p>
+          <br></br>
+        </p> */}
+        {/* <label for="NumberOfBusinessSeats">NumberOfBusinessSeats:</label>
+        <input
+          type="text"
+          id="NumberOfBusinessSeats"
+          name="NumberOfBusinessSeats"
+          onChange={(event) => setNumberOfBusinessSeats(event.target.value)}
+        />
+        <p>
+          <br></br>
+        </p> */}
+        {/* <label for="NumberOfFirstSeats">NumberOfFirstSeats:</label>
+        <input
+          type="text"
+          id="NumberOfFirstSeats"
+          name="NumberOfFirstSeats"
+          onChange={(event) => setNumberOfFirstSeats(event.target.value)}
+        />
+        <p>
+          <br></br>
+        </p> */}
+        <label for="Airport">Airport:</label>
+        <input
+          type="text"
+          id="Airport"
+          name="Airport"
+          onChange={(event) => setAirport(event.target.value)}
         />
         <p>
           <br></br>
         </p>
-        <label for="Cabin">Cabin:</label>
+        <label for="AirportTerminals">AirportTerminals:</label>
         <input
           type="text"
-          id="Cabin"
-          name="Cabin"
-          onChange={(event) => setCabin(event.target.value)}
+          id="AirportTerminals"
+          name="AirportTerminals"
+          onChange={(event) => setAirportTerminals(event.target.value)}
+        />
+        <p>
+          <br></br>
+        </p>
+        <label for="From">From:</label>
+        <input
+          type="text"
+          id="From"
+          name="From"
+          onChange={(event) => setFrom(event.target.value)}
+        />
+        <p>
+          <br></br>
+        </p>
+        <label for="To">To:</label>
+        <input
+          type="text"
+          id="To"
+          name="To"
+          onChange={(event) => setTo(event.target.value)}
         />
         <p>
           <br></br>
@@ -121,22 +200,24 @@ function UserSearch() {
           Search flight{" "}
         </button>
       </form>
-      
+
       {S.map((val) => (
         <div key={val._id}>
-          <div><label for="DepartureDate"> Departure Date: </label>{val.DepartureDate}</div>
-          <div><label for="ArrivalDate">Arrival Date: </label>{val.ArrivalDate}</div>
-          <div><label for="NumberOfPassengers"> Number Of Passengers: </label>{val.NumberOfPassengers}</div>
-          <div><label for="DepartureAirportTerminal">Departure Airport Terminal: </label>{val.DepartureAirportTerminal}</div>
-          <div><label for="ArrivalAirportTerminal">Arrival Airport Terminal: </label>{val.ArrivalAirportTerminal}</div>
-          <div><label for="Cabin">Cabin: </label>{val.Cabin}</div>
-          <button onClick={FuncFlag}>Choose </button>
-          {Flag ? <MoreDetailsDep id={val.id} /> : <></>}
-          
-            </div>
-            
-       
+          <div><label for="FlightNumber">Flight Number: </label>{val.FlightNumber}</div>
+          <div><label for="DepartureTime">Departure Time: </label>{val.DepartureTime}</div>
+          <div><label for="ArrivalTime">Arrival Time: </label>{val.ArrivalTime}</div>
+          <div><label for="DateOfFlight">Date Of Flight: </label>{val.DateOfFlight}</div>
+          <div><label for="AirportTerminals">Airport Terminals: </label>{val.AirportTerminals}</div>
+          {/* <div>{val.NumberOfEconomySeats}</div>
+          <div>{val.NumberOfBusinessSeats}</div> */}
+          <div><label for="From">From: </label>{val.From}</div>
+          <div><label for="To">To: </label>{val.To}</div>
+        
+          {/* <button onClick={FuncFlag}>Choose </button>
+          {Flag ? <Navigate to={`/MoreDetailsDep/${val.FlightNumber}`} /> : <></>} */}
+        </div>
       ))}
+      {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
     </div>
   );
 }
