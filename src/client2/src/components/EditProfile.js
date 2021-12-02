@@ -48,11 +48,7 @@ export default class EditProfile extends Component {
 
   }
 
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
+
 
   onChangeEmail(e) {
     this.setState({
@@ -65,16 +61,67 @@ export default class EditProfile extends Component {
       Password: e.target.value
     })
   }
+  onChangeFirstName(e){
+    this.setState({
+      FirstName:e.target.value
+    })
+  }
+  onChangeLastName(e){
+    this.setState({
+      LastName:e.target.value
+    })
+  }
+    onChangeAge(e){
+      this.setState({
+        Age:e.target.value
+      })
+  }
+    onchangeBornIn(e){
+      this.setState({
+        BornIn:e.target.value
+      })
+    }
+    onchangeLivesIn(e){
+      this.setState({
+        LivesIn:e.target.value
+      })
+    }
+   onchangeMartialStatus(e){
+      this.setState({
+        MartialStatus:e.target.value
+      })
+    }
+    onchangePhoneNumber(e){
+      this.setState({
+        PhoneNumber:e.target.value
+      })
+    }
+    onchangeJob(e){
+      this.setState({
+        Job:e.target.value
+      })
+    }
+    onchangePassportNumber(e){
+      this.setState({
+        PassportNumber:e.target.value
+      })
+    }
 
-  
 
   onSubmit(e) {
     e.preventDefault();
 
     const newuser = {
-      username: this.state.username,
+      FirstName: this.state.FirstName,
+      LastName: this.state.LastName,
+      Age:this.state.Age,
+      BornIn:this.state.BornIn,
+      LivesIn:this.state.LivesIn,
+      PhoneNumber:this.state.PhoneNumber,
+      Job:this.state.Job,
+      PassportNumber:this.state.PhoneNumber,
       Email: this.state.Email,
-      Password: this.state.Password,
+      
     }
 
     console.log(newuser);
@@ -91,13 +138,13 @@ export default class EditProfile extends Component {
       <h3>Edit Profile</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
-          <label>Username: </label>
+          <label>FirstName: </label>
           <input ref="userInput"
                 type="text"
               required
               className="form-control"
               value={this.state.username}
-              onChange={this.onChangeUsername}/>
+              onChange={this.onChangeFirstName}/>
   
         </div>
         <div className="form-group"> 
@@ -110,15 +157,94 @@ export default class EditProfile extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Password: </label>
+          <label>FirstName: </label>
           <input 
               type="text" 
               className="form-control"
-              value={this.state.Password}
-              onChange={this.onChangePassword}
+              value={this.state.FirstName}
+              onChange={this.onChangeFirstName}
               />
         </div>
-  
+        <div className="form-group">
+          <label>LastName: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.LastName}
+              onChange={this.onChangeLastName}
+              />
+        </div>
+        <div className="form-group">
+          <label>Age: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.Age}
+              onChange={this.onChangeAge}
+              />
+        </div>
+        <div className="form-group">
+          <label>BornIn: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.BornIn}
+              onChange={this.onchangeBornIn}
+              />
+        </div>
+        <div className="form-group">
+          <label>LivesIn: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.LivesIn}
+              onChange={this.onChangeLivesIn}
+              />
+        </div>
+        <div className="form-group">
+          <label>MartialStatus: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.MartialStatus}
+              onChange={this.onchangeMartialStatus}
+              />
+        </div>
+        <div className="form-group">
+          <label>PhoneNumber: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.PhoneNumber}
+              onChange={this.onchangePhoneNumber}
+              />
+        </div>
+        <div className="form-group">
+          <label>Job: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.Job}
+              onChange={this.onchangeJob}
+              />
+        </div>
+        
+        <div className="form-group">
+          <label>PassportNumber: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.PassportNumber}
+              onChange={this.onchangePassportNumber}
+              />
+        </div>
+
+
+
+
+
+
+
 
         <div className="form-group">
           <input type="submit" value="submit" className="btn btn-primary" />
