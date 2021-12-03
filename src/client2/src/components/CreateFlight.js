@@ -47,25 +47,29 @@ const CreateFlight = () => {
     </br>
     </p>
     <label for="DepartureTime">Departure:</label>
-    <input type="text" id="DepartureTime" name="DepartureTime"  onChange={(event) => setDepartureTime(event.target.value)}/>
+    <input type="text" id="DepartureTime" name="DepartureTime" 
+     onChange={(event) => setDepartureTime(event.target.value)}/>
     <p>
     <br>
     </br>
     </p>
     <label for="ArrivalTime">Arrival:</label>
-    <input type="text" id="ArrivalTime" name="ArrivalTime"  onChange={(event) => setArrivalTime(event.target.value)}/>
+    <input type="text" id="ArrivalTime" name="ArrivalTime"  
+    onChange={(event) => setArrivalTime(event.target.value)}/>
     <p>
     <br>
     </br>
     </p>
     <label for="DateOfFlight">Date:</label>
-    <input type="text" id="DateOfFlight" name="DateOfFlight"  onChange={(event) => setDateOfFlight(event.target.value)}/>
+    <input type="text" id="DateOfFlight" name="DateOfFlight"  
+    onChange={(event) => setDateOfFlight(event.target.value)}/>
     <p>
     <br>
     </br>
     </p>
     <label for="NumberOfEconomySeats">NumberOfEconomySeats:</label>
-    <input type="text" id="NumberOfEconomySeats" name="NumberOfEconomySeats"  onChange={(event) => setNumberOfEconomySeats(event.target.value)}/>
+    <input type="text" id="NumberOfEconomySeats" name="NumberOfEconomySeats"  
+    onChange={(event) => setNumberOfEconomySeats(event.target.value)}/>
     <p>
     <br>
     </br>
