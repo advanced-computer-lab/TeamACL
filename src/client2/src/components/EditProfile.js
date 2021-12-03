@@ -47,10 +47,16 @@ export default class EditProfile extends Component {
     axios.get('http://localhost:3000/EditProfile/')
       .then(response => {
         this.setState({
-          username: response.data.username,
+          FirstName: response.data.FirstName,
+          LastName: response.data.LastName,
           Email: response.data.Email,
-          Password: response.data.Password,
-    
+          Age: response.data.Age,
+          BornIn: response.data.BornIn,
+          LivesIn: response.data.LivesIn,
+          MartialStatus: response.data.MartialStatus,
+          PhoneNumber: response.data.PhoneNumber,
+          Job: response.data.Job,
+          PassportNumber: response.data.PassportNumber,
         })   
       })
       .catch(function (error) {

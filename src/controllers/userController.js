@@ -18,7 +18,9 @@ exports.createUser = async (req, res) => {
 };
 
 
+
 exports.viewUser = async(req,res) =>{
+console.log("here");
   try{
       const user = User.findOne({Email:req.body.email});
     if(user==null){
