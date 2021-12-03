@@ -24,7 +24,7 @@ export default class ViewProfile extends Component {
       LivesIn:'',
       MartialStatus:'',
       PhoneNumber:'',
-      Job:'',
+      Job:'', 
       PassportNumber:'',
 
     };
@@ -32,20 +32,20 @@ export default class ViewProfile extends Component {
   
 
   componentDidMount() {
-    axios.get('http://localhost:3000/api/User')
-      .then(response => {
+    axios.get('http://localhost:3000/ViewProfile')
+      .then(user => {
         this.setState({
-          FirstName: response.data.FirstName,
-          LastName: response.data.LastName,
-          Email: response.data.Email,
-          Age: response.data.Age,
-          username: response.data.username,
-          BornIn: response.data.BornIn,
-          LivesIn: response.data.LivesIn,
-          MartialStatus: response.data.MartialStatus,
-          PhoneNumber: response.data.PhoneNumber,
-          Job: response.data.Job,
-          PassportNumber: response.data.PassportNumber,
+
+          FirstName: user.data.FirstName,
+          LastName: user.data.LastName,
+          Email: user.data.Email,
+          Age: user.data.Age,
+          BornIn: user.data.BornIn,
+          LivesIn: user.data.LivesIn,
+          MartialStatus: user.data.MartialStatus,
+          PhoneNumber: user.data.PhoneNumber,
+          Job: user.data.Job,
+          PassportNumber: user.data.PassportNumber,
         
       
         })   
@@ -59,59 +59,68 @@ export default class ViewProfile extends Component {
 
   
   render() {
-    const user= this.setState.user
+    const FirstName = this.state.FirstName
+    const LastName=  this.state.LastName;
+    const Email=  this.state.Email;
+    const Age=  this.state.Age;
+    const BornIn=  this.state.BornIn;
+    const LivesIn=  this.state.LivesIn;
+    const MartialStatus=  this.state.MartialStatus;
+    const PhoneNumber=  this.state.PhoneNumber;
+    const Job=  this.state.Job;
+    const PassportNumber=  this.state.PassportNumber;
     return (
     <div>
       <h3>Edit Profile</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
-          <label>FirstName: {user.FirstName} </label>
+          <label>FirstName: {FirstName} </label>
         
   
         </div>
 
         <div className="form-group"> 
-          <label>LastName:{user.LastName} </label>
+          <label>LastName:{LastName} </label>
        
   
         </div>
         <div className="form-group"> 
-          <label>Age: {user.Age}</label>
+          <label>Age: {Age}</label>
    
         </div>
 
         <div className="form-group"> 
-          <label>BornIn:{user.BornIn} </label>
+          <label>BornIn:{BornIn} </label>
        
   
         </div>
         <div className="form-group"> 
-          <label>LivesIn:{user.LivesIn}</label>
+          <label>LivesIn:{LivesIn}</label>
  
   
         </div>
         <div className="form-group"> 
-          <label>MartialStatus:{user.MartialStatus} </label>
+          <label>MartialStatus:{MartialStatus} </label>
 
   
         </div>
         <div className="form-group"> 
-          <label>PhoneNumber:{user.PhoneNumber} </label>
+          <label>PhoneNumber:{PhoneNumber} </label>
 
   
         </div>
         <div className="form-group"> 
-          <label>Job:{user.Job} </label>
+          <label>Job:{Job} </label>
  
   
         </div>
         <div className="form-group"> 
-          <label>PassportNumber: {user.PassportNumber} </label>
+          <label>PassportNumber: {PassportNumber} </label>
          
   
         </div>
         <div className="form-group"> 
-          <label>Email:{user.Email} </label>
+          <label>Email:{Email} </label>
         
         </div>
 

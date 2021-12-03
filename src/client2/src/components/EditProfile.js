@@ -7,16 +7,39 @@ export default class EditProfile extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+    
+    this.onChangeLastName = this.onChangeLastName.bind(this);
+    this.onChangeAge = this.onChangeAge.bind(this);
+    this.onChangeBornIn = this.onChangeBornIn.bind(this);
+    this.onChangeLivesIn = this.onChangeLivesIn.bind(this);
+    this.onChangeMartialStatus = this.onChangeMartialStatus.bind(this);
+    this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+    this.onChangeJob = this.onChangeJob.bind(this);
+    this.onChangePassportNumber = this.onChangePassportNumber.bind(this);
+
+
+
+
+
+
     this.onSubmit = this.onSubmit.bind(this);
 
-    this.state = {
-      username: '',
+    this.state = { 
+      FirstName: '',
       Email: '',
       Password: '',
-      users: []
+      LastName:'',
+      Age:0,
+      BornIn:'',
+      LivesIn:'',
+      MartialStatus:'',
+      PhoneNumber:'',
+      Job:'', 
+      PassportNumber:'',
+
+    
     }
   }
 
@@ -56,72 +79,81 @@ export default class EditProfile extends Component {
     })
   }
 
-  onChangePassword(e) {
+ 
+  onChangeFirstName(e) {
     this.setState({
-      Password: e.target.value
+      FirstName: e.target.value
     })
   }
-  onChangeFirstName(e){
+  
+  onChangeLastName(e) {
     this.setState({
-      FirstName:e.target.value
+      LastName: e.target.value
     })
   }
-  onChangeLastName(e){
+  
+  onChangeAge(e) {
     this.setState({
-      LastName:e.target.value
+      Age: e.target.value
     })
   }
-    onChangeAge(e){
-      this.setState({
-        Age:e.target.value
-      })
+  
+  onChangeBornIn(e) {
+    this.setState({
+      BornIn: e.target.value
+    })
   }
-    onchangeBornIn(e){
-      this.setState({
-        BornIn:e.target.value
-      })
-    }
-    onchangeLivesIn(e){
-      this.setState({
-        LivesIn:e.target.value
-      })
-    }
-   onchangeMartialStatus(e){
-      this.setState({
-        MartialStatus:e.target.value
-      })
-    }
-    onchangePhoneNumber(e){
-      this.setState({
-        PhoneNumber:e.target.value
-      })
-    }
-    onchangeJob(e){
-      this.setState({
-        Job:e.target.value
-      })
-    }
-    onchangePassportNumber(e){
-      this.setState({
-        PassportNumber:e.target.value
-      })
-    }
+  
+  onChangeLivesIn(e) {
+    this.setState({
+      LivesIn: e.target.value
+    })
+  }
+  
+  onChangeMartialStatus(e) {
+    this.setState({
+      MartialStatus: e.target.value
+    })
+  }
+  
+  onChangePhoneNumber(e) {
+    this.setState({
+      PhoneNumber: e.target.value
+    })
+  }
+  
 
+  
+  onChangeJob(e) {
+    this.setState({
+      Job: e.target.value
+    })
+  }
+  
+  onChangePassportNumber(e) {
+    this.setState({
+      PassportNumber: e.target.value
+    })
+  }
+
+  
 
   onSubmit(e) {
     e.preventDefault();
 
     const newuser = {
+      username: this.state.username,
+      
       FirstName: this.state.FirstName,
       LastName: this.state.LastName,
-      Age:this.state.Age,
-      BornIn:this.state.BornIn,
-      LivesIn:this.state.LivesIn,
-      PhoneNumber:this.state.PhoneNumber,
-      Job:this.state.Job,
-      PassportNumber:this.state.PhoneNumber,
       Email: this.state.Email,
-      
+      Age: this.state.Age,
+      BornIn: this.state.BornIn,
+      LivesIn: this.state.LivesIn,
+      MartialStatus: this.state.MartialStatus,
+      PhoneNumber: this.state.PhoneNumber,
+      Job: this.state.Job,
+      PassportNumber:this.state.PassportNumber,
     }
 
     console.log(newuser);
@@ -143,7 +175,7 @@ export default class EditProfile extends Component {
                 type="text"
               required
               className="form-control"
-              value={this.state.username}
+              value={this.state.FirstName}
               onChange={this.onChangeFirstName}/>
   
         </div>
@@ -154,15 +186,6 @@ export default class EditProfile extends Component {
               className="form-control"
               value={this.state.Email}
               onChange={this.onChangeEmail}
-              />
-        </div>
-        <div className="form-group">
-          <label>FirstName: </label>
-          <input 
-              type="text" 
-              className="form-control"
-              value={this.state.FirstName}
-              onChange={this.onChangeFirstName}
               />
         </div>
         <div className="form-group">
@@ -177,7 +200,7 @@ export default class EditProfile extends Component {
         <div className="form-group">
           <label>Age: </label>
           <input 
-              type="text" 
+              type="number" 
               className="form-control"
               value={this.state.Age}
               onChange={this.onChangeAge}
@@ -189,7 +212,7 @@ export default class EditProfile extends Component {
               type="text" 
               className="form-control"
               value={this.state.BornIn}
-              onChange={this.onchangeBornIn}
+              onChange={this.onChangeBornIn}
               />
         </div>
         <div className="form-group">
@@ -207,7 +230,7 @@ export default class EditProfile extends Component {
               type="text" 
               className="form-control"
               value={this.state.MartialStatus}
-              onChange={this.onchangeMartialStatus}
+              onChange={this.onChangeMartialStatus}
               />
         </div>
         <div className="form-group">
@@ -216,7 +239,7 @@ export default class EditProfile extends Component {
               type="text" 
               className="form-control"
               value={this.state.PhoneNumber}
-              onChange={this.onchangePhoneNumber}
+              onChange={this.onChangePhoneNumber}
               />
         </div>
         <div className="form-group">
@@ -225,26 +248,19 @@ export default class EditProfile extends Component {
               type="text" 
               className="form-control"
               value={this.state.Job}
-              onChange={this.onchangeJob}
+              onChange={this.onChangeJob}
               />
         </div>
-        
         <div className="form-group">
           <label>PassportNumber: </label>
           <input 
               type="text" 
               className="form-control"
               value={this.state.PassportNumber}
-              onChange={this.onchangePassportNumber}
+              onChange={this.onChangePassportNumber}
               />
         </div>
-
-
-
-
-
-
-
+        
 
         <div className="form-group">
           <input type="submit" value="submit" className="btn btn-primary" />

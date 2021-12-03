@@ -4,7 +4,7 @@ const flightController = require("../controllers/flightController");
 const router = express.Router();
 router
   .route("/findFlight")
-  .post(flightController.getFlight);
+  .get(flightController.getFlight);
 router
   .route("/")
   .get(flightController.getAllFlights)
