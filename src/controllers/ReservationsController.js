@@ -18,12 +18,6 @@ exports.createReservation = async (req, res) => {
     console.log(req.params);
     console.log(req.body);
 
-    // const flight = await Flight.getAllFlights(FlightId);
-    // const NumOfSeatsInCabin = flight.NumberOfEconomySeats;
-
-    // const newSeatsNum = NumOfSeatsInCabin - NumberOfSeats;
-    // const updateflight = await Flight.updateFlight(newSeatsNum);
-
     const reservation = await Reserve.create({
       UserEmail,
       UserId,
