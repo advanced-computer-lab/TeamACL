@@ -44,7 +44,7 @@ export default class EditProfile extends Component {
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/EditProfile/')
+    axios.put('http://localhost:3000/EditProfile/')
       .then(response => {
         this.setState({
           FirstName: response.data.FirstName,
@@ -63,18 +63,8 @@ export default class EditProfile extends Component {
         console.log(error);
       })
 
-    axios.get('http://localhost:3000/users/')
-      .then(response => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.username),
-          })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
+    
+    
   }
 
 
