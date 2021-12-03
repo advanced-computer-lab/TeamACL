@@ -5,6 +5,9 @@ import axios from 'axios';
 // import DatePicker from 'react-datepicker';
 // import "react-datepicker/dist/react-datepicker.css";
 
+
+
+
 export default class ViewProfile extends Component {
   constructor(props) {
     super(props);
@@ -12,92 +15,106 @@ export default class ViewProfile extends Component {
 
 
     this.state = {
-      username: '',
+      FirstName: '',
       Email: '',
       Password: '',
-      users: []
-    }
+      LastName:'',
+      Age:0,
+      BornIn:'',
+      LivesIn:'',
+      MartialStatus:'',
+      PhoneNumber:'',
+      Job:'',
+      PassportNumber:'',
+
+    };
   }
+  
 
   componentDidMount() {
-    axios.get('http://localhost:3000/ViewProfile')
+    axios.get('http://localhost:3000/api/User')
       .then(response => {
         this.setState({
+          FirstName: response.data.FirstName,
+          LastName: response.data.LastName,
+          Email: response.data.Email,
+          Age: response.data.Age,
           username: response.data.username,
-          description: response.data.description,
-          duration: response.data.duration,
+          BornIn: response.data.BornIn,
+          LivesIn: response.data.LivesIn,
+          MartialStatus: response.data.MartialStatus,
+          PhoneNumber: response.data.PhoneNumber,
+          Job: response.data.Job,
+          PassportNumber: response.data.PassportNumber,
+        
       
         })   
       })
       .catch(function (error) {
         console.log(error);
       })
+      
 
-    axios.get('http://localhost:3000/users/')
-      .then(response => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.username),
-          })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
+    }
 
-  }
-
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
-
-  onChangeEmail(e) {
-    this.setState({
-      Email: e.target.value
-    })
-  }
-
-  onChangePassword(e) {
-    this.setState({
-      Password: e.target.value
-    })
-  }
-
+  
   render() {
+    const user= this.setState.user
     return (
     <div>
       <h3>Edit Profile</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
-          <label>Username: </label>
-          <text ref="userInput"
-                type="text"
-              required
-              className="form-control"
-              value={this.state.username}
-              />
+          <label>FirstName: {user.FirstName} </label>
+        
+  
+        </div>
+
+        <div className="form-group"> 
+          <label>LastName:{user.LastName} </label>
+       
   
         </div>
         <div className="form-group"> 
-          <label>Email: </label>
-          <text  type="text"
-              required
-              className="form-control"
-              value={this.state.Email}
-             
-              />
+          <label>Age: {user.Age}</label>
+   
         </div>
-        <div className="form-group">
-          <label>Password: </label>
-          <text 
-              type="text" 
-              className="form-control"
-              value={this.state.Password}
-             
-              />
+
+        <div className="form-group"> 
+          <label>BornIn:{user.BornIn} </label>
+       
+  
         </div>
+        <div className="form-group"> 
+          <label>LivesIn:{user.LivesIn}</label>
+ 
+  
+        </div>
+        <div className="form-group"> 
+          <label>MartialStatus:{user.MartialStatus} </label>
+
+  
+        </div>
+        <div className="form-group"> 
+          <label>PhoneNumber:{user.PhoneNumber} </label>
+
+  
+        </div>
+        <div className="form-group"> 
+          <label>Job:{user.Job} </label>
+ 
+  
+        </div>
+        <div className="form-group"> 
+          <label>PassportNumber: {user.PassportNumber} </label>
+         
+  
+        </div>
+        <div className="form-group"> 
+          <label>Email:{user.Email} </label>
+        
+        </div>
+
   
 
         <div className="form-group">
