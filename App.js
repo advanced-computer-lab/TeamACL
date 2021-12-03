@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const flightRouts = require("./src/routes/flightRouts");
 const userRouter = require("./src/routes/usersRouts");
 const reserveRouter = require("./src/routes/reservationsRouts");
+
 const cors = require("cors");
 const User = require("./src/models/User");
 const Flight = require("./src/models/Flight");
@@ -18,5 +19,6 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api/v1/flights", flightRouts);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reserve", reserveRouter);
+// app.use("/api/v1/wishlist", wishListRouter);
 
 module.exports = app;
