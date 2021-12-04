@@ -79,7 +79,7 @@ export default class EditProfile extends Component {
 
     console.log(newuser);
 
-    axios.post('http://localhost:5000/EditProfile/' + this.props.match.params.id, newuser)
+    axios.put('http://localhost:5000/EditProfile/' + this.props.match.params.id, newuser)
       .then(res => console.log(res.data));
 
     window.location = '/';
