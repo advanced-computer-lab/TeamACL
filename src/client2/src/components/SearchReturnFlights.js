@@ -122,6 +122,7 @@ function SearchReturnFlights() {
       </form>
 
       {S.map((val) => (
+        //   val.FlightType == "Departure"?(
         <div key={val._id}>
             
           <div><label for="FlightNumber">Flight Number: </label>{val.FlightNumber}</div>
@@ -134,6 +135,9 @@ function SearchReturnFlights() {
           <button onClick={FuncFlag}>Show more details </button>
           {Flag ? <Navigate to={`/MoreDetailsDep/${val.FlightNumber}`} /> : <></>}
         </div>
+        //   ): (
+        //           <></>
+        //         )
       ))}
       {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
     </div>

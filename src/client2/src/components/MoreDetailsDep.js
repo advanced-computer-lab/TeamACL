@@ -3,12 +3,10 @@ import axios from "axios";
 import {useParams} from "react-router-dom"
 
 const MoreDetailsDep = () => {
-  const [FlightNumber, setFlightNumber] = useState();
-  const [DepartureTime, setDepartureTime] = useState();
-  const [ArrivalTime, setArrivalTime] = useState();
-  const [TripDuration, setTripDuration] = useState();
-  const [Cabin, setCabin] = useState();
-  const [BaggageAllowance, setBaggageAllowance] = useState();
+  const [FlightNumber, setFlightNumber] = useState();const [DepartureTime, setDepartureTime] = useState();
+  const [ArrivalTime, setArrivalTime] = useState();const [DepartureDate, setDepartureDate] = useState();
+  const [ArrivalDate, setArrivalDate] = useState();const [DurationInHrs, setDurationInHrs] = useState(); const [DateOfFlight, setDateOfFlight] = useState();
+  const [Cabin, setCabin] = useState();const [BaggageAllowance, setBaggageAllowance] = useState();
   const [U, setU] = useState();
   const [flight, setFlight] = useState(null);
     const {Ifd }= useParams()
@@ -16,28 +14,31 @@ const MoreDetailsDep = () => {
   //use ifd to getFlight
   useEffect(() => {
     if (U) {
-        const flagda = 1;
+       // const flagda = 1;
         axios
-             .post("http://localhost:3000/api/v1/flights", {
-                 
-                FlightType: flight.FlightType,
+             .post("http://localhost:3000/api/v1/flights", { 
                 FlightNumber: flight.FlightNumber,
                 DepartureTime: flight.DepartureTime,
                 ArrivalTime: flight.ArrivalTime,
+                DepartureTime: flight.DepartureTime,
+                ArrivalTime: flight.ArrivalTime,
+                DepartureDate: flight.DepartureDate,
+                ArrivalDate: flight.ArrivalDate,
+                DurationInHrs:flight.DurationInHrs,
                 DateOfFlight: flight.DateOfFlight,
                 NumberOfEconomySeats: flight.NumberOfEconomySeats,
                 NumberOfBusinessSeats: flight.NumberOfBusinessSeats,
-                NumberOfFirstSeats: flight.NumberOfFirstSeats,
+                NumberOfFirstClassSeats: flight.NumberOfFirstClassSeats,
                 Airport: flight.Airport,
-                AirportTerminals: flight.AirportTerminals,
+                DepartureTerminals: flight.DepartureTerminals,
+                ArrivalTerminals: flight.ArrivalTerminals,
                 From: flight.From,
                 To: flight.To,
-                Price: flight.Price,
+                TotalTicketPrice: flight.TotalTicketPrice,
                 BaggageAllowance: flight.BaggageAllowance,
-                TripDuration: flight.TripDuration,
-                Class: flight.Class,
-                NumberOfPassengers: flight.NumberOfPassengers,
-        
+                TypeOfFlight: flight.TypeOfFlight,
+                Cabin: flight.Cabin,
+                //NumberOfPassengers: flight.NumberOfPassengers,                                
               })
               .then((res) => console.log(res.data))
               .catch((err) => console.log(err));
@@ -57,19 +58,18 @@ const MoreDetailsDep = () => {
     })
     .catch((err) => console.log("error herererere"));
   }, [])
-  //flight number, departure and arrival times, trip duration, cabin class and baggage allowance.
-  return (
+   return (
    <div>
     {flight && <div>
-        
+
           <div><label for="FlightNumber">Flight Number:{flight.FlightNumber}</label></div>
           <div><label for="DepartureTime">Departure Time:{flight.DepartureTime}</label></div>
           <div><label for="Arrival Time">Arrival Time:{flight.ArrivalTime}</label></div>
           <div><label for="TripDuration">Trip Duration:{flight.TripDuration}</label></div>
           <div><label for="Cabin">Cabin:{flight.Cabin}</label></div>
           <div><label for="BaggaegAllowance">Baggage Allowance:{flight.BaggageAllowance}</label></div>
-          <button type="Add to profile" value="Add to profile " onClick={sub}>
-          Add to profile{" "}
+          <button type="Add to wishlist" value="Add to wishlist " onClick={sub}>
+          Add to wishlist{" "}
           </button>
           
         
