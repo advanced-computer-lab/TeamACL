@@ -3,6 +3,7 @@ const flightSchema = mongoose.Schema({
   FlightNumber: {
     type: Number,
     required: true,
+    unique: true,
   },
   DepartureTime: {
     type: String,
@@ -69,19 +70,19 @@ const flightSchema = mongoose.Schema({
   TotalTicketPrice: {
     type: Number,
     required: true,
-    },
-    BaggageAllowance: {
-      type: Number,
+  },
+  BaggageAllowance: {
+    type: Number,
+    required: true,
+  },
+  TypeOfFlight: {
+     type: String,
+     required: true,
+  },
+  Cabin: {
+     type: String,
       required: true,
-      },
-      TypeOfFlight: {
-        type: String,
-        required: true,
-        },
-        Cabin: {
-          type: String,
-          required: true,
-          },
+  },
 });
 const Flight = mongoose.model("Flight", flightSchema);
 module.exports = Flight;
