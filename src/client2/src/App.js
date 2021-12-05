@@ -22,6 +22,7 @@ import AddToWishlist from "./components/AddToWishlist";
 import ViewReservedFlights from "./components/ViewReservedFlights";
 import Profile from "./components/Profile";
 import GuestUser from "./components/GuestUser"
+import ViewProfile from "./components/ViewProfile"
 //import { Router } from "express";
 
 
@@ -63,6 +64,7 @@ const App = () =>  {
          <Route path = "/ViewReservedFlights" element = {<ViewReservedFlights/>} />
          <Route path = "/Profile" element = {<Profile/>} />
          <Route path = "/GuestUser" element = {<GuestUser/>} />
+         <Route path = "/ViewProfile" element = {<ViewProfile/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>
