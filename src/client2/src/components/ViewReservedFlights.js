@@ -20,8 +20,8 @@ const ViewReservedFlights = () =>  {
   axios.get(`http://localhost:3000//api/v1/reserve`)
     .then(res => {
       // console.log("frontend");
-      console.log(res.data.data.flights);
-      setList(res.data.data.flights);
+      console.log(res.data.data.reservation);
+      setList(res.data.data.reservation);
     }).catch(err => console.log(err))
 
 
@@ -33,17 +33,13 @@ return (
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
         <TableRow>
-          <TableCell>FlightNumber</TableCell>
-          <TableCell align="right">DepartureTime</TableCell>
-          <TableCell align="right">ArrivalTime</TableCell>
-          <TableCell align="right">DateOfFlight</TableCell>
-          <TableCell align="right">NumberOfEconomySeats</TableCell>
-          <TableCell align="right">NumberOfBusinessSeats</TableCell>
-          <TableCell align="right">NumberOfFirstSeats</TableCell>
-          <TableCell align="right">Airport</TableCell>
-          <TableCell align="right">AirportTerminals</TableCell>
-          <TableCell align="right">From</TableCell>
-          <TableCell align="right">To</TableCell>
+          <TableCell>UserEmail</TableCell>
+          <TableCell align="right">UserId</TableCell>
+          <TableCell align="right">FlightId</TableCell>
+          <TableCell align="right">FlightNumber</TableCell>
+          <TableCell align="right">ChosenCabin</TableCell>
+          <TableCell align="right">NumberOfSeats</TableCell>
+      
           <TableCell align="right"></TableCell>
         </TableRow>
       </TableHead>
@@ -51,23 +47,18 @@ return (
       
         {list.map((row) => (
           <TableRow
-            key={row.FlightNumber}
+            key={row.UserId}
             sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
           >
             <TableCell component="th" scope="row">
-              {row.FlightNumber}
+              {row.UserEmail}
             </TableCell>
             
-            <TableCell align="right">{row.DepartureTime}</TableCell>
-            <TableCell align="right">{row.ArrivalTime}</TableCell>
-            <TableCell align="right">{row.DateOfFlight}</TableCell>
-            <TableCell align="right">{row.NumberOfEconomySeats}</TableCell>
-            <TableCell align="right">{row.NumberOfBusinessSeats}</TableCell>
-            <TableCell align="right">{row.NumberOfFirstSeats}</TableCell>
-            <TableCell align="right">{row.Airport}</TableCell>
-            <TableCell align="right">{row.AirportTerminals}</TableCell>
-            <TableCell align="right">{row.From}</TableCell>
-            <TableCell align="right">{row.To}</TableCell>
+            <TableCell align="right">{row.UserId}</TableCell>
+            <TableCell align="right">{row.FlightId}</TableCell>
+            <TableCell align="right">{row.FlightNumber}</TableCell>
+            <TableCell align="right">{row.ChosenCabin}</TableCell>
+            <TableCell align="right">{row.NumberOfSeats}</TableCell>
             <TableCell align="right">  <CancelReservation id={row._id} />
             </TableCell>
           </TableRow>
