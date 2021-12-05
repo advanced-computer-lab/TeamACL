@@ -213,8 +213,8 @@ function UserSearch() {
           <div><label for="From">From: </label>{val.From}</div>
           <div><label for="To">To: </label>{val.To}</div>
         
-          {/* <button onClick={FuncFlag}>Choose </button>
-          {Flag ? <Navigate to={`/MoreDetailsDep/${val.FlightNumber}`} /> : <></>} */}
+           <button onClick={FuncFlag}>Choose </button>
+          {Flag ? <Navigate to={`/MoreDetailsDep/${val.FlightNumber}`} /> : <></>} 
         </div>
       ))}
       {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
