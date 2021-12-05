@@ -51,7 +51,7 @@ const MoreDetailsDep = () => {
 
   useEffect(() => {
     axios
-    .get(`http://localhost:3000/api/v1/flights/findFlight`, {FlightNumber: Ifd})
+    .post(`http://localhost:3000/api/v1/flights/findFlight`, {FlightNumber: Ifd})
     .then((res) => {
         setFlight(res.data[0])
       console.log(res.data)

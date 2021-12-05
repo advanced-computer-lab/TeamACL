@@ -9,10 +9,7 @@ return (
             <li>Admin</li>
             </Link>
             <Link to="/UserNav">
-            <li>Existing User</li>
-            </Link>
-            <Link to="/GuestUser">
-            <li>Guest User</li>
+            <li>User</li>
             </Link>
 
         </u1>

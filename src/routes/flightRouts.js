@@ -6,7 +6,7 @@ const router = express.Router();
 router.route("/departure-flights").get(flightController.getDepartureFlights);
 router.route("/return-flights").get(flightController.getReturnFlights);
 
-router.route("/findFlight").get(flightController.getFlight);
+router.route("/findFlight").post(flightController.getFlight);
 router
   .route("/")
   .post(flightController.createFLight)
