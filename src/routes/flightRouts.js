@@ -13,8 +13,11 @@ router
 
 router
   .route("/:id")
-  // .get(flightController.getSelectedFlight)  //di
+  .get(flightController.getSelectedFlight)  //di
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 
-module.exports = router;
+// router
+//   .route("/findReturnFlight")
+//   .post(flightController.getReturnFlights);  
+// module.exports = router;
