@@ -7,7 +7,9 @@ function UserNav(){
 return (
     <nav>
         <u1 className="nav-Links">
-       
+        <Link to="/Profile">
+            <li>Profile</li>
+            </Link>
             <Link to="/SearchFlight">
             <li>Search Leaving Flights</li>
             </Link>

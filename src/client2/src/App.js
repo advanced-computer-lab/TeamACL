@@ -19,6 +19,8 @@ import Home from "./components/Home";
 import MoreDetailsDep from "./components/MoreDetailsDep";
 import Admin from "./components/Admin";
 import AddToWishlist from "./components/AddToWishlist";
+import ViewReservedFlights from "./components/ViewReservedFlights";
+import Profile from "./components/Profile";
 //import { Router } from "express";
 
 
@@ -57,6 +59,8 @@ const App = () =>  {
          <Route path = "/MoreDetailsDep/:Ifd" element = {<MoreDetailsDep/>} />
          <Route path = "/SearchReturnFlights" element = {<SearchReturnFlights/>} />
          <Route path = "/WishList" element = {<AddToWishlist/>} />
+         <Route path = "/ViewReservedFlights" element = {<ViewReservedFlights/>} />
+         <Route path = "/Profile" element = {<Profile/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>

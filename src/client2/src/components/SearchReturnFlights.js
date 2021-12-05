@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
 import MoreDetailsDep from "./MoreDetailsDep"; 
-import {useNavigate, Navigate} from 'react-router-dom';
+import {useNavigate, Navigate, Link} from 'react-router-dom';
 //import { setFlagsFromString } from "v8";
 const bodyParser = require('body-parser')
 
@@ -63,6 +63,9 @@ function SearchReturnFlights() {
   return (
      
     <div>
+      <Link to="/Profile">
+            <li>Profile</li>
+            </Link>
         <h1> search returning flights </h1>
       <form onSubmit={(e) => e.preventDefault()}>
       

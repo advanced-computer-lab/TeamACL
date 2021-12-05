@@ -22,5 +22,5 @@ app.use(express.static(`${__dirname}/public`));
 app.use("/api/v1/flights", flightRouts);
 app.use("/api/v1/users", userRouter);
 app.use("/api/v1/reserve", reserveRouter); //
-app.use("/api/v1/WishList/:FlightNumber", WishListRouter); //
+app.use("/api/v1/WishList", WishListRouter); //
 module.exports = app;
