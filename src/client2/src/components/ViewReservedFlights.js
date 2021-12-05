@@ -17,7 +17,7 @@ const ViewReservedFlights = () =>  {
   const [showCancelForm, setShowCancelForm] = useState(false);  
   const [list,setList] = useState([]);
     useEffect(()=>{
-  axios.get(`http://localhost:3000/api/v1/flights`)
+  axios.get(`http://localhost:3000//api/v1/reserve`)
     .then(res => {
       // console.log("frontend");
       console.log(res.data.data.flights);

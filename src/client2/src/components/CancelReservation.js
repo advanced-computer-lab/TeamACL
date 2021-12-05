@@ -11,7 +11,7 @@ function CancelReservation({ id }) {
     if (U) {
       console.log("from frontend");
       axios
-        .delete(`http://localhost:3000/api/v1/flights/${id}`)
+        .delete(`http://localhost:3000//api/v1/reserve/${id}`)
         .then((res) => console.log(res))
         .catch((err) => console.log(err));
       setU(false);
