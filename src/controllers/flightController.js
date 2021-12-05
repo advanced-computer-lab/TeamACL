@@ -94,33 +94,31 @@ exports.deleteFlight = async (req, res) => {
   }
 };
 
-exports.getDepartureFlights = async (req, res) => {
-  try {
-    const flight = await Flight.find({
-      TypeOfFlight: "Departure",
-    });
-
-    res.status(200).json({
-      status: "success",
-      data: {
-        flight,
-      },
-    });
-  } catch (err) {
-    res.status(404).json({
-      status: "fail",
-      massege: err,
-    });
-  }
-};
-exports.getReturnFlights =  async (req, res) => {
+exports.getDepartureFlights =  async (req, res) => {
   // console.log(req)
    console.log("request",req.body)
- 
+  req.body["TypeOfFlight"] = "Departure";
    try {
     
      const flight =  await Flight.find(req.body);
-     TypeOfFlight: "Return",
+     
+     console.log(flight)
+     res.send( flight);
+   } catch (err) {
+     res.status(404).json({
+       status: "fail",
+       massege: err,
+     });
+   }
+ };
+exports.getReturnFlights =  async (req, res) => {
+  // console.log(req)
+   console.log("request",req.body)
+  req.body["TypeOfFlight"] = "Return";
+   try {
+    
+     const flight =  await Flight.find(req.body);
+     
      console.log(flight)
      res.send( flight);
    } catch (err) {

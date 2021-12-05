@@ -46,7 +46,7 @@ function SearchReturnFlights() {
       console.log(body);
       
       axios
-        .post(`http://localhost:3000/api/v1/flights/findReturnFlight`, body)
+        .post(`http://localhost:3000/api/v1/flights/return-flights`, body)
         .then((res) => {
           setS(res.data)
           console.log(res.data)
