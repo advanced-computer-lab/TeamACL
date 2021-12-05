@@ -14,12 +14,10 @@ const MoreDetailsDep = () => {
   //use ifd to getFlight
   useEffect(() => {
     if (U) {
-       // const flagda = 1;
         axios
-             .post("http://localhost:3000/api/v1/flights", { 
+        // .put(`http://localhost:3000/api/v1/flights/${id}`, body)
+             .post(`http://localhost:3000/api/v1/WishList/${flight.FlightNumber}/${flight.DepartureTime}/${flight.ArrivalTime}/${flight.DepartureDate}/${flight.ArrivalDate}/${flight.DurationInHrs}/${flight.DateOfFlight}/${flight.NumberOfEconomySeats}/${flight.NumberOfBusinessSeats}/${flight.NumberOfFirstClassSeats}/${flight.Airport}/${flight.DepartureTerminals}/${flight.ArrivalTerminals}/${flight.From}/${flight.To}/${flight.TotalTicketPrice}/${flight.BaggageAllowance}/${flight.TypeOfFlight}/${flight.Cabin}`, { 
                 FlightNumber: flight.FlightNumber,
-                DepartureTime: flight.DepartureTime,
-                ArrivalTime: flight.ArrivalTime,
                 DepartureTime: flight.DepartureTime,
                 ArrivalTime: flight.ArrivalTime,
                 DepartureDate: flight.DepartureDate,
@@ -45,6 +43,7 @@ const MoreDetailsDep = () => {
       setU(false);
     }
   }, [U]);
+  
   function sub() {
     setU(true);
   }
@@ -70,9 +69,7 @@ const MoreDetailsDep = () => {
           <div><label for="BaggaegAllowance">Baggage Allowance:{flight.BaggageAllowance}</label></div>
           <button type="Add to wishlist" value="Add to wishlist " onClick={sub}>
           Add to wishlist{" "}
-          </button>
-          
-        
+          </button>                          
           {/* <button onClick={FuncFlag}>Choose </button>
           {Flag ? <MoreDetailsDep id={val.id} /> : <></>} */}
         </div>}

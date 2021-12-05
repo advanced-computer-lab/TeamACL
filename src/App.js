@@ -26,13 +26,13 @@ app.get("/Home", (req, res) => {
   });
 
 // #Routing to usercontroller here
-
+/*
 app.post('/add-user', userController.addUser)
 app.get('/view-users',userController.viewUsers)
 app.get('/get-all-users/:name', userController.getUser)
 app.put('/update-user/:id',userController.updateUser)
 app.delete('/delete-user/:id',userController.deleteUser)                                    
-
+*/
 app.post('/getflight',(req,res)=>{
 obj['FlightNumber']= req.body.FlightNumber
 console.log(obj)
