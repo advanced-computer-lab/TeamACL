@@ -15,9 +15,15 @@ import { useHistory } from 'react-router-dom';
 import Nav from "./components/Nav";
 import UserNav from "./components/UserNav";
 import UserSearch from "./components/UserSearch";
+import ViewReservedFlights from "./components/ViewReservedFlights";
 import Home from "./components/Home";
 import MoreDetailsDep from "./components/MoreDetailsDep";
 import Admin from "./components/Admin";
+import EditProfile from "./components/EditProfile";
+import ViewProfile from "./components/ViewProfile";
+
+import GuestUser from "./components/GuestUser";
+
 //import { Router } from "express";
 
 
@@ -46,6 +52,10 @@ const App = () =>  {
       <div>
         
           <Routes>
+            <Route path = "/ViewProfile" element = {<ViewProfile/>}/>
+          <Route path = "/EditProfile" element = {<EditProfile/>}/>
+
+          
          <Route path = "/CreateFlight" element = {<CreateFlight/>} />
          <Route path = "/ViewAllFlights" element = {<ViewAllFlights/>} />
          <Route path = "/SearchFlight" element = {<SearchFlight/>} />
@@ -55,6 +65,8 @@ const App = () =>  {
          <Route path = "/UserSearch" element = {<UserSearch/>} />
          <Route path = "/MoreDetailsDep/:Ifd" element = {<MoreDetailsDep/>} />
          <Route path = "/SearchReturnFlights" element = {<SearchReturnFlights/>} />
+         <Route path = "/ViewReservedFlights" element = {<ViewReservedFlights/>} />
+         <Route path = "/GuestUser" element = {<GuestUser/>} />
          <Route exact path = "/" element = {<Home/>} />
          </Routes>
          </div>
