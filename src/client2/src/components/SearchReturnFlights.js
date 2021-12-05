@@ -9,48 +9,39 @@ const bodyParser = require('body-parser')
 
 
 
-function SearchFlight() {
-  const[NumberOfPassengers, setNumberOfPassengers] = useState();
-  const [DepartureTerminals, setDepartureTerminals] = useState();
-  const [ArrivalTerminals, setArrivalTerminals] = useState();
-  const [DepartureDate, setDepartureDate] = useState();
-  const [ArrivalDate, setArrivalDate] = useState();
-  const [Cabin, setCabin] = useState();
-  const [Flag ,setFlag] = useState();
+function SearchReturnFlights() {
   
+    const[NumberOfPassengers, setNumberOfPassengers] = useState();
+    const [DepartureTerminals, setDepartureTerminals] = useState();
+    const [ArrivalTerminals, setArrivalTerminals] = useState();
+    const [DepartureDate, setDepartureDate] = useState();
+    const [ArrivalDate, setArrivalDate] = useState();
+    const [Cabin, setCabin] = useState();
+    const[Flag,setFlag] = useState();
 
   const [U, setU] = useState(false);
   const [S, setS] = useState([]);
 
-  // useEffect(() => {
-  //   if (U) {
-      
-  //     //setU(false);
-  //   }
-    
-  // }, [U]);
-
   function sub() {
     const body = {};
     if (NumberOfPassengers !== "") {
-      body["NumberOfPassengers"] = NumberOfPassengers;
-    }
-      if (DepartureTerminals !== "") {
-        body["DepartureTerminals"] = DepartureTerminals;
+        body["NumberOfPassengers"] = NumberOfPassengers;
       }
-      if (ArrivalTerminals !== "") {
-        body["ArrivalTerminals"] = ArrivalTerminals;
-      }
-      if (DepartureDate !== "") {
-        body["DepartureDate"] = DepartureDate;
-      }
-      if (ArrivalDate !== "") {
-        body["ArrivalDate"] = ArrivalDate;
-      }
-      if (Cabin !== "") {
-        body["Cabin"] = Cabin;
-      }
-      
+        if (DepartureTerminals !== "") {
+          body["DepartureTerminals"] = DepartureTerminals;
+        }
+        if (ArrivalTerminals !== "") {
+          body["ArrivalTerminals"] = ArrivalTerminals;
+        }
+        if (DepartureDate !== "") {
+          body["DepartureDate"] = DepartureDate;
+        }
+        if (ArrivalDate !== "") {
+          body["ArrivalDate"] = ArrivalDate;
+        }
+        if (Cabin !== "") {
+          body["Cabin"] = Cabin;
+        }
       console.log("from frontend");
       console.log(body);
       
@@ -70,9 +61,11 @@ function SearchFlight() {
 
 
   return (
+     
     <div>
+        <h1> search returning flights </h1>
       <form onSubmit={(e) => e.preventDefault()}>
-        <h1>Search for Leaving flights</h1>
+      
         <label for="NumberOfPassengers">NumberOfPassengers:</label>
         <input
           type="text"
@@ -123,27 +116,32 @@ function SearchFlight() {
         <p>
           <br></br>
         </p>
-        
         <button type="Update Flight" value="Update Flight" onClick={sub}>
           Search flight{" "}
         </button>
       </form>
 
       {S.map((val) => (
+        //   val.FlightType == "Departure"?(
         <div key={val._id}>
-          <div><label for="DepartureTerminals">DepartureTerminals: </label>{val.DepartureTerminals}</div>
-          <div><label for="DepartureDate">Departure Date: </label>{val.DepartureDate}</div>
-          <div><label for="ArrivalDate">Arrival Date: </label>{val.ArrivalDate}</div>
-          <div><label for="From">From: </label>{val.From}</div>
-          <div><label for="To">To: </label>{val.To}</div>
+            
+          <div><label for="FlightNumber">Flight Number: </label>{val.FlightNumber}</div>
+          <div><label for="DepartureTime">Departure Time: </label>{val.DepartureTime}</div>
+          <div><label for="ArrivalTime">Arrival Time: </label>{val.ArrivalTime}</div>
+          <div><label for="DurationInhrs">Duration: </label>{val.DurationInHrs}</div>
+          <div><label for="TotalTicketPrice">Price: </label>{val.TotalTicketPrice}</div>
+         
         
           <button onClick={FuncFlag}>Show more details </button>
           {Flag ? <Navigate to={`/MoreDetailsDep/${val.FlightNumber}`} /> : <></>}
         </div>
+        //   ): (
+        //           <></>
+        //         )
       ))}
       {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
     </div>
   );
 }
 
-export default SearchFlight;
+export default SearchReturnFlights;

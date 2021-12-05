@@ -6,8 +6,10 @@ import { useState, useEffect } from "react";
 const ViewFlight = ({
   setShowCreateForm,
   setShowList,
+  setShowDeparture,
   setShowUpdateForm,
   setShowDeleteForm,
+  setShowProfile,
 }) => {
   function ClickHandler3() {
     setShowDeleteForm(true);
@@ -20,31 +22,20 @@ const ViewFlight = ({
   function ClickHandler2() {
     setShowList(true);
   }
-
-  // function Home() {
-  //   const [list,setList] = useState([]);
-  //   //useEffect(()=>{},[]);
-  //   useEffect(()=>{
-  //     axios.get(`${route}:${port}`)
-  //       .then(res => {
-  //         setList(res.data);
-  //       })
-
-  //   },[]);
-
+  function ClickHandler4() {
+    setShowDeparture(true);
+  }
+  function ClickHandler5() {
+    setShowProfile(true);
+  }
   return (
     <div>
       <button onClick={ClickHandler}> ~ Add New Flight</button>
-
       <button onClick={ClickHandler2}>~ view all Flights</button>
+      <button onClick={ClickHandler4}>~ view departure flights</button>
+      <button onClick={ClickHandler5}>~ Profile</button>
     </div>
-    // <Link to="/update-flight" className="btn btn-outline-warning float-right">
-    //
-    //</Link>
-    // <p>
-    // <br>
-    //</br>
-    //</p>
+  
   );
 };
 

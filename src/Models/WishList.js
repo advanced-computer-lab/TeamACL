@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const flightSchema = mongoose.Schema({
+const wishListSchema = mongoose.Schema({
   FlightNumber: {
     type: Number,
     required: true,
@@ -52,12 +52,7 @@ const flightSchema = mongoose.Schema({
   ArrivalTerminals: {
     type: String,
     required: true,
-    },
-
-  // AirportTerminals: {
-  //   type: String,
-  //   required: true,
-  // },
+  },
   From: {
     type: String,
     required: true,
@@ -83,5 +78,5 @@ const flightSchema = mongoose.Schema({
     required: true,
   },
 });
-const Flight = mongoose.model("Flight", flightSchema);
-module.exports = Flight;
+const WishList = mongoose.model("WishList", wishListSchema);
+module.exports = WishList;

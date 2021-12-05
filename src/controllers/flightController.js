@@ -19,7 +19,10 @@ exports.getAllFlights = async (req, res) => {
   }
 };
 
-exports.getFlight = async (req, res) => {
+exports.getFlight =  async (req, res) => {
+ // console.log(req)
+  console.log("request",req.body)
+
   try {
     const flight = await Flight.find(req.body);
     console.log(req.body);
@@ -94,6 +97,7 @@ exports.getSelectedFlight = async (req, res) => {
     });
   }
 };
+
 
 exports.createFLight = async (req, res) => {
   console.log(req.body);

@@ -9,9 +9,12 @@ const User = require("./src/models/User");
 const Flight = require("./src/models/Flight");
 
 const app = express();
-if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
-}
+// if (process.env.NODE_ENV === "development") {
+//   app.use(morgan("dev"));
+// }
+const bp= require('body-parser')
+app.use(bp.json())
+app.use(bp.urlencoded())
 app.use(cors({ origin: true, credentials: true }));
 app.use(express.json());
 app.use(express.static(`${__dirname}/public`));

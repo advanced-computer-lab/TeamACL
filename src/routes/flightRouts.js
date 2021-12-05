@@ -1,5 +1,5 @@
 const express = require("express");
-const flightController = require("./../controllers/flightController");
+const flightController = require("../controllers/flightController");
 
 const router = express.Router();
 

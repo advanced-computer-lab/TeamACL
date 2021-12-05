@@ -7,7 +7,7 @@ const CreateFlight = () => {
   const [DateOfFlight, setDateOfFlight] = useState();
   const [NumberOfEconomySeats, setNumberOfEconomySeats] = useState();
   const [NumberOfBusinessSeats, setNumberOfBusinessSeats] = useState();
-  const [NumberOfFirstSeats, setNumberOfFirstSeats] = useState();
+  const [NumberOfFirstClassSeats, setNumberOfFirstClassSeats] = useState();
   const [Airport, setAirport] = useState();
   const [AirportTerminals, setAirportTerminals] = useState();
   const [From, setFrom] = useState();
@@ -25,7 +25,7 @@ const CreateFlight = () => {
         DateOfFlight: DateOfFlight,
         NumberOfEconomySeats: NumberOfEconomySeats,
         NumberOfBusinessSeats: NumberOfBusinessSeats,
-        NumberOfFirstSeats: NumberOfFirstSeats,
+        NumberOfFirstClassSeats: NumberOfFirstClassSeats,
         Airport: Airport,
         AirportTerminals: AirportTerminals,
         From: From,
@@ -67,7 +67,7 @@ const CreateFlight = () => {
       <p>
         <br></br>
       </p>
-      <label for="DateOfFlight">Date:</label>
+      {/* <label for="DateOfFlight">Date:</label>
       <input
         type="text"
         id="DateOfFlight"
@@ -76,7 +76,7 @@ const CreateFlight = () => {
       />
       <p>
         <br></br>
-      </p>
+      </p> */}
       <label for="NumberOfEconomySeats">NumberOfEconomySeats:</label>
       <input
         type="text"
@@ -97,12 +97,12 @@ const CreateFlight = () => {
       <p>
         <br></br>
       </p>
-      <label for="NumberOfFirstSeats">NumberOfFirstSeats:</label>
+      <label for="NumberOfFirstClassSeats">NumberOfFirstClassSeats:</label>
       <input
         type="text"
-        id="NumberOfFirstSeats"
-        name="NumberOfFirstSeats"
-        onChange={(event) => setNumberOfFirstSeats(event.target.value)}
+        id="NumberOfFirstClassSeats"
+        name="NumberOfFirstClassSeats"
+        onChange={(event) => setNumberOfFirstClassSeats(event.target.value)}
       />
 
       <p>
@@ -118,7 +118,7 @@ const CreateFlight = () => {
       <p>
         <br></br>
       </p>
-      <label for="AirportTerminals">AirportTerminals:</label>
+      {/* <label for="AirportTerminals">AirportTerminals:</label>
       <input
         type="text"
         id="AirportTerminals"
@@ -127,7 +127,7 @@ const CreateFlight = () => {
       />
       <p>
         <br></br>
-      </p>
+      </p> */}
       <label for="From">From:</label>
       <input
         type="text"
