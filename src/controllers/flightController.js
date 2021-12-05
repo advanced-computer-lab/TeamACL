@@ -21,6 +21,7 @@ exports.getAllFlights = async (req, res) => {
 
 exports.getFlight = async (req, res) => {
   try {
+    if (req.body.FlightNumber < 1) throw Error("No such flight");
     const flight = await Flight.find(req.body);
     console.log(req.body);
     res.status(200).json({
