@@ -5,9 +5,9 @@ const router = express.Router();
 
  router.route("/:id").put(userController.updateUser); //di 
 
-router.route("/").post(userController.createUser);
+router.route("/add-user").post(userController.createUser);
 
-// router.route("/ViewProfile").get(userController.viewUser)
+router.route("/").get(userController.viewUser)
 // router.route("/EditProfile").put(userController.editUser)
 
 module.exports = router;

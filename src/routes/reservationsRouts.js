@@ -16,5 +16,6 @@ router
   .post(reserveController.createReservation);
 
 router.route("/:id").delete(reserveController.canceleReservation);
+router.route("/").get(reserveController.getallReservation);
 
 module.exports = router;

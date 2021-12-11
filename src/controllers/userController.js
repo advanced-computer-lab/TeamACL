@@ -34,6 +34,23 @@ exports.createUser = async (req, res) => {
     });
   }
 };
+exports.viewUser = async (req, res) => {
+  try {
+    const getUser = await User.find();
+    console.log(req.body);
+    res.status(201).json({
+      status: "success",
+      data: {
+        User: getUser,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      massege: "Invalid data sent",
+    });
+  }
+};
 
 exports.updateUser = async (req, res) => {
   console.log(req.body);

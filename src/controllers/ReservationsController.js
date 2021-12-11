@@ -66,6 +66,25 @@ exports.getReservation = async (req, res) => {
     });
   }
 };
+exports.getallReservation = async (req, res) => {
+  try {
+   
+    console.log(req.params);
+    
+    const reservation = await Reserve.find();
+    res.status(200).json({
+      status: "success",
+      data: {
+        Reserve: reservation,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
 
 exports.canceleReservation = async (req, res) => {
   try {
