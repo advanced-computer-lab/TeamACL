@@ -20,8 +20,8 @@ const Reservation = mongoose.Schema({
     type: String,
     required: true,
   },
-  NumberOfSeats: {
-    type: Number,
+  SeatNumber: {
+    type: String,
     required: true,
   },
 });

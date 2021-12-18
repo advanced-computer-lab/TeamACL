@@ -41,6 +41,24 @@ const flightSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  AvailiableSeatsInEconomy: {
+    type: Array,
+  },
+  AvailableSeatsInBusiness: {
+    type: Array,
+  },
+  AvailableSeatsInFirstClass: {
+    type: Array,
+  },
+  ReservedSeatsInEconomy: {
+    type: Array,
+  },
+  ReservedSeatsInBusiness: {
+    type: Array,
+  },
+  ReservedSeatsInFirstClass: {
+    type: Array,
+  },
   Airport: {
     type: String,
     required: true,

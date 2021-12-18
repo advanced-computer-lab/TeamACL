@@ -12,7 +12,7 @@ router
 
 // UserEmail/:UserId/:FlightId
 router
-  .route("/:UserEmail/:UserId/:FlightId/:FlightNumber")
+  .route("/:UserEmail/:UserId/:FlightId/:FlightNumber/:ChosenCabin/:SeatNumber")
   .post(reserveController.createReservation);
 
 router.route("/:id").delete(reserveController.canceleReservation);

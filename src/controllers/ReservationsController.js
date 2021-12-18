@@ -1,6 +1,7 @@
 const { findByIdAndDelete, findById } = require("../models/User");
 const Reserve = require("./../models/Reservations");
-const Flight = require("./../controllers/flightController");
+const Flight = require("./../models/Flight");
+// const Flight = require("./../controllers/flightController");
 
 /* we will recieve the FLight info in the params, and recieve the number of seats and chosen cabin in the body
   1) we need to get the number of the seats availiable in the chosen cabin in the flight through accesssing it by quering it
@@ -13,8 +14,8 @@ exports.createReservation = async (req, res) => {
     const UserId = req.params.UserId;
     const FlightId = req.params.FlightId;
     const FlightNumber = Number(req.params.FlightNumber); //convert it to number
-    const ChosenCabin = req.body.ChosenCabin;
-    const NumberOfSeats = Number(req.body.NumberOfSeats);
+    const ChosenCabin = req.params.ChosenCabin;
+    const SeatNumber = req.params.SeatNumber;
     console.log(req.params);
     console.log(req.body);
 
@@ -24,13 +25,26 @@ exports.createReservation = async (req, res) => {
       FlightId,
       FlightNumber,
       ChosenCabin,
-      NumberOfSeats,
+      SeatNumber,
     });
-    console.log(req.body);
+
+    const flight = await Flight.findOne({ FlightId });
+    console.log("the flight is ====>", flight);
+    if (ChosenCabin === "Economy") {
+      const AvailiableSeatsInEconomy = flight.AvailiableSeatsInEconomy;
+      console.log(AvailiableSeatsInEconomy);
+      const ReservedSeatsInEconomy = flight.ReservedSeatsInEconomy;
+      ReservedSeatsInEconomy.push(SeatNumber);
+
+      const newFlight = await Flight.findByIdAndUpdate(FlightId, {
+        ReservedSeatsInEconomy,
+      });
+    }
     res.status(200).json({
       status: "success",
       data: {
         Reserve: reservation,
+        Flight: newFlight,
       },
     });
   } catch (err) {
@@ -38,6 +52,7 @@ exports.createReservation = async (req, res) => {
       status: "fail",
       massege: "Invalid data sent",
     });
+    console.log(err);
   }
 };
 
@@ -90,3 +105,25 @@ exports.canceleReservation = async (req, res) => {
 //this can be called the summary of the choosen flight
 
 //remaining the cart if needed
+
+exports.updateReservation = async (req, res) => {
+  try {
+    const flightId = req.params.id;
+    const NumberOfSeats = Number(req.body.NumberOfSeats);
+    const updatedReservation = await Reserve.findByIdAndUpdate({
+      flightId,
+      NumberOfSeats,
+    });
+    res.status(200).json({
+      status: "success",
+      data: {
+        Reserve: updatedReservation,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
