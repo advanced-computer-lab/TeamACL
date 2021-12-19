@@ -4,6 +4,10 @@ const flightController = require("./../controllers/flightController");
 
 const router = express.Router();
 
+router
+  .route("/:id/:UserEmail/:FlightId/:FlightNumber/:ChosenCabin/:SeatNumber")
+  .patch(reserveController.updateReservation);
+
 router.route("/flightDetails/:id").get(flightController.getSelectedFlight); //gets the flight details using the getSelected flight method in the flight controller!!!
 
 router

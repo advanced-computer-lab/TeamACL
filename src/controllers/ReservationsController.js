@@ -8,6 +8,7 @@ const Flight = require("./../models/Flight");
   and then subtracting it and then updating it in the flight schema
 
 */
+
 exports.createReservation = async (req, res) => {
   try {
     const UserEmail = req.params.UserEmail;
@@ -28,18 +29,71 @@ exports.createReservation = async (req, res) => {
       SeatNumber,
     });
 
-    const flight = await Flight.findOne({ FlightId });
+    const flight = await Flight.findOne({ FlightNumber }); //gets null
+    if (!flight) console.log("there is a problem", FlightId);
+
     console.log("the flight is ====>", flight);
+
+    let newFlight;
+    let AvailiableSeatsInEconomy;
+    let AvailableSeatsInBusiness;
+    let AvailableSeatsInFirstClass;
+
+    //in case the chosen cabin in economy..........
     if (ChosenCabin === "Economy") {
-      const AvailiableSeatsInEconomy = flight.AvailiableSeatsInEconomy;
-      console.log(AvailiableSeatsInEconomy);
+      AvailiableSeatsInEconomy = flight.AvailiableSeatsInEconomy;
+      const index = AvailiableSeatsInEconomy.indexOf(SeatNumber);
+      console.log(AvailiableSeatsInEconomy, `this is the index ==> ${index}`);
       const ReservedSeatsInEconomy = flight.ReservedSeatsInEconomy;
       ReservedSeatsInEconomy.push(SeatNumber);
 
-      const newFlight = await Flight.findByIdAndUpdate(FlightId, {
+      AvailiableSeatsInEconomy.splice(index, 1);
+
+      newFlight = await Flight.findByIdAndUpdate(FlightId, {
         ReservedSeatsInEconomy,
+        AvailiableSeatsInEconomy,
       });
     }
+    //in case the chosen cabin is business.......
+    else if (ChosenCabin === "Business") {
+      AvailableSeatsInBusiness = flight.AvailableSeatsInBusiness;
+      console.log(
+        "Avaliable seats in business =====>",
+        AvailableSeatsInBusiness
+      );
+      const index = AvailableSeatsInBusiness.indexOf(SeatNumber);
+      const ReservedSeatsInBusiness = flight.ReservedSeatsInBusiness;
+      ReservedSeatsInBusiness.push(SeatNumber);
+      AvailableSeatsInBusiness.splice(index, 1);
+      newFlight = await Flight.findByIdAndUpdate(FlightId, {
+        ReservedSeatsInBusiness,
+        AvailableSeatsInBusiness,
+      });
+    }
+    //in case the chosen cabin is first class...............
+    else {
+      AvailableSeatsInFirstClass = flight.AvailableSeatsInFirstClass;
+      console.log(
+        "Avaliable seats in first class =====>",
+        AvailableSeatsInFirstClass
+      );
+      const index = AvailableSeatsInFirstClass.indexOf(SeatNumber);
+      const ReservedSeatsInFirstClass = flight.ReservedSeatsInFirstClass;
+      ReservedSeatsInFirstClass.push(SeatNumber);
+      AvailableSeatsInFirstClass.splice(index, 1);
+      newFlight = await Flight.findByIdAndUpdate(FlightId, {
+        ReservedSeatsInFirstClass,
+        AvailableSeatsInFirstClass,
+      });
+    }
+    //if all seats are reserved then delete the flight from the list of availiable flights
+    if (
+      AvailiableSeatsInEconomy.length === 0 &&
+      AvailableSeatsInBusiness.length === 0 &&
+      AvailableSeatsInFirstClass.length === 0
+    )
+      await Flight.findByIdAndDelete(FlightId);
+
     res.status(200).json({
       status: "success",
       data: {
@@ -84,10 +138,7 @@ exports.getReservation = async (req, res) => {
 
 exports.canceleReservation = async (req, res) => {
   try {
-    // const UserId = req.query.UserID; //make sure that req.query is the correct one --> it might need to be changed to req.params
-    // const FlightId = req.query.FlightId; //make sure that req.query is the correct one --> it might need to be changed to req.params
-    // console.log(UserId, FlightId);
-    console.log(req.params.id);
+    //we need to remove the cancelled chair from the array
     const reservation = await Reserve.findByIdAndDelete(req.params.id);
     res.status(200).json({
       status: "success",
@@ -108,16 +159,18 @@ exports.canceleReservation = async (req, res) => {
 
 exports.updateReservation = async (req, res) => {
   try {
-    const flightId = req.params.id;
-    const NumberOfSeats = Number(req.body.NumberOfSeats);
-    const updatedReservation = await Reserve.findByIdAndUpdate({
-      flightId,
-      NumberOfSeats,
+    const ReservationId = req.params.id;
+    const FlightId = req.params.FlightId;
+    const SeatNumber = req.params.SeatNumber;
+
+    const updatedReservation = await Reserve.findByIdAndUpdate(ReservationId, {
+      SeatNumber,
     });
     res.status(200).json({
       status: "success",
       data: {
         Reserve: updatedReservation,
+        Flight: newFlight,
       },
     });
   } catch (err) {
@@ -125,5 +178,6 @@ exports.updateReservation = async (req, res) => {
       status: "fail",
       massege: err,
     });
+    console.log(err);
   }
 };
