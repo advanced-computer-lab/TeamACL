@@ -111,6 +111,7 @@ exports.createFLight = async (req, res) => {
       status: "fail",
       massege: "Invalid data sent",
     });
+    console.log(err);
   }
 };
 

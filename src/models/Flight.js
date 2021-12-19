@@ -91,10 +91,6 @@ const flightSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  Cabin: {
-    type: String,
-    required: true,
-  },
 });
 const Flight = mongoose.model("Flight", flightSchema);
 module.exports = Flight;
