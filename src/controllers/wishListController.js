@@ -11,9 +11,6 @@ exports.addToWishList = async (req, res) => {
     const ArrivalDate = req.params.ArrivalDate;
     const DurationInHrs = req.params.DurationInHrs;
     const DateOfFlight = req.params.DateOfFlight;
-    const NumberOfEconomySeats = Number(req.params.NumberOfEconomySeats);
-    const NumberOfBusinessSeats = Number(req.params.NumberOfBusinessSeats);
-    const NumberOfFirstClassSeats = Number(req.params.NumberOfFirstClassSeats);
     const Airport = req.params.Airport;
     const DepartureTerminals = req.params.DepartureTerminals;
     const ArrivalTerminals = req.params.ArrivalTerminals;
@@ -22,8 +19,13 @@ exports.addToWishList = async (req, res) => {
     const TotalTicketPrice = Number(req.params.TotalTicketPrice);
     const BaggageAllowance = req.params.BaggageAllowance;
     const TypeOfFlight = req.params.TypeOfFlight;
-    const Cabin = req.params.Cabin;
-    console.log(req.params);
+    const myFlight = await FLights.findOne({ FlightNumber });
+    console.log(myFlight);
+    const AvailiableSeatsInEconomy = myFlight.AvailiableSeatsInEconomy;
+    const AvailableSeatsInBusiness = myFlight.AvailableSeatsInBusiness;
+    const AvailableSeatsInFirstClass = myFlight.AvailableSeatsInFirstClass;
+
+    console.log(TypeOfFlight);
     const flight = await WishList.create({
       FlightNumber,
       DepartureTime,
@@ -32,9 +34,9 @@ exports.addToWishList = async (req, res) => {
       ArrivalDate,
       DurationInHrs,
       DateOfFlight,
-      NumberOfEconomySeats,
-      NumberOfBusinessSeats,
-      NumberOfFirstClassSeats,
+      AvailiableSeatsInEconomy,
+      AvailableSeatsInBusiness,
+      AvailableSeatsInFirstClass,
       Airport,
       DepartureTerminals,
       ArrivalTerminals,
@@ -43,12 +45,11 @@ exports.addToWishList = async (req, res) => {
       TotalTicketPrice,
       BaggageAllowance,
       TypeOfFlight,
-      Cabin,
     });
     res.status(200).json({
       status: "success",
       data: {
-        WishList: flight,
+        4: flight,
       },
     });
   } catch (err) {
@@ -56,6 +57,7 @@ exports.addToWishList = async (req, res) => {
       status: "fail",
       massege: "Invalid data sent",
     });
+    console.log(err);
   }
 };
 

@@ -29,17 +29,14 @@ const wishListSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  NumberOfEconomySeats: {
-    type: Number,
-    required: true,
+  AvailiableSeatsInEconomy: {
+    type: Array,
   },
-  NumberOfBusinessSeats: {
-    type: Number,
-    required: true,
+  AvailableSeatsInBusiness: {
+    type: Array,
   },
-  NumberOfFirstClassSeats: {
-    type: Number,
-    required: true,
+  AvailableSeatsInFirstClass: {
+    type: Array,
   },
   Airport: {
     type: String,
@@ -70,10 +67,6 @@ const wishListSchema = mongoose.Schema({
     required: true,
   },
   TypeOfFlight: {
-    type: String,
-    required: true,
-  },
-  Cabin: {
     type: String,
     required: true,
   },

@@ -15,11 +15,10 @@ exports.createReservation = async (req, res) => {
     const UserId = req.params.UserId;
     const FlightId = req.params.FlightId;
     const FlightNumber = Number(req.params.FlightNumber); //convert it to number
-    const ChosenCabin = req.params.ChosenCabin;
-    const SeatNumber = Number(req.params.SeatNumber);
-    console.log(req.params);
-    console.log(req.body);
-
+    const ChosenCabin = req.body.ChosenCabin;
+    const SeatNumber = req.body.SeatNumber;
+    // console.log(req.params);
+    console.log(ChosenCabin, SeatNumber);
     const reservation = await Reserve.create({
       UserEmail,
       UserId,
@@ -87,12 +86,12 @@ exports.createReservation = async (req, res) => {
       });
     }
     //if all seats are reserved then delete the flight from the list of availiable flights
-    if (
-      AvailiableSeatsInEconomy.length === 0 &&
-      AvailableSeatsInBusiness.length === 0 &&
-      AvailableSeatsInFirstClass.length === 0
-    )
-      await Flight.findByIdAndDelete(FlightId);
+    // if (
+    //   AvailiableSeatsInEconomy.length === 0 &&
+    //   AvailableSeatsInBusiness.length === 0 &&
+    //   AvailableSeatsInFirstClass.length === 0
+    // )
+    //   await Flight.findByIdAndDelete(FlightId);
 
     res.status(200).json({
       status: "success",
