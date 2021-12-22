@@ -16,7 +16,7 @@ exports.createReservation = async (req, res) => {
     const FlightId = req.params.FlightId;
     const FlightNumber = Number(req.params.FlightNumber); //convert it to number
     const ChosenCabin = req.params.ChosenCabin;
-    const SeatNumber = req.params.SeatNumber;
+    const SeatNumber = Number(req.params.SeatNumber);
     console.log(req.params);
     console.log(req.body);
 
@@ -122,10 +122,12 @@ exports.getReservation = async (req, res) => {
       FlightId: FlightId,
       FlightNumber: FlightNumber,
     });
+    console.log(reservation);
     res.status(200).json({
       status: "success",
+      results: reservation.length,
       data: {
-        Reserve: reservation,
+        reservation,
       },
     });
   } catch (err) {
@@ -133,6 +135,7 @@ exports.getReservation = async (req, res) => {
       status: "fail",
       massege: err,
     });
+    console.log(err);
   }
 };
 

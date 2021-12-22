@@ -3,6 +3,9 @@ const flightController = require("./../controllers/flightController");
 
 const router = express.Router();
 
+router.route("/flightIdpost").post(flightController.postFlightId);
+router.route("/flightIdget").get(flightController.getFlightId);
+
 router.route("/departure-flights").get(flightController.getDepartureFlights);
 router.route("/return-flights").get(flightController.getReturnFlights);
 

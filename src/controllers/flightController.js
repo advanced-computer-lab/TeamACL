@@ -1,5 +1,41 @@
 const Flight = require("./../models/Flight");
 
+let fID = "";
+
+exports.getFlightId = async (req, res) => {
+  try {
+    res.status(200).json({
+      status: "success",
+      data: {
+        fID,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
+
+exports.postFlightId = async (req, res) => {
+  try {
+    const x = req.body.id;
+    fID = x;
+    res.status(200).json({
+      status: "success",
+      data: {
+        fID,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
+
 exports.getAllFlights = async (req, res) => {
   try {
     const flights = await Flight.find();
@@ -119,7 +155,7 @@ exports.updateFlight = async (req, res) => {
   console.log("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
   try {
     console.log(req.body);
-    const flight = await Flight.findByIdAndUpdate(req.params.id, req.body, {
+    const flight = await Flight.findByIdAndUpdate(fID, req.body, {
       new: true,
     });
     res.status(200).json({
@@ -133,6 +169,7 @@ exports.updateFlight = async (req, res) => {
       status: "fail",
       massege: err,
     });
+    console.log(err);
   }
 };
 
