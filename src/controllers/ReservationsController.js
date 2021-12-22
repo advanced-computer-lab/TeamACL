@@ -114,7 +114,7 @@ exports.getReservation = async (req, res) => {
   try {
     const UserId = req.params.UserId;
     const FlightId = req.params.FlightId;
-    const FlightNumber = req.params.FlightNumber;
+    const FlightNumber = Number(req.params.FlightNumber);
     console.log(req.params);
     console.log(UserId, FlightId, FlightNumber);
     const reservation = await Reserve.find({
