@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { setServers } from "dns";
 import MoreDetailsDep from "./MoreDetailsDep"; 
+import Nav from "./Nav";
 import {useNavigate, Navigate} from 'react-router-dom';
 //import { setFlagsFromString } from "v8";
 const bodyParser = require('body-parser')
@@ -84,6 +85,8 @@ function UserSearch() {
 
   return (
     <div>
+       <Nav/>
+       <ul class = "formlookplane">
       <form onSubmit={(e) => e.preventDefault()}>
         <h1>Search</h1>
         <label for="FlightNumber">FlightNumber:</label>
@@ -218,6 +221,7 @@ function UserSearch() {
         </div>
       ))}
       {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
+    </ul>
     </div>
   );
 }

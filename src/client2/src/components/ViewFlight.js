@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import Nav from "./Nav";
 const ViewFlight = ({
   setShowCreateForm,
   setShowList,
@@ -29,13 +29,18 @@ const ViewFlight = ({
     setShowProfile(true);
   }
   return (
+   <ul>
+      <Nav/>
     <div>
+      
+
+     
       <button onClick={ClickHandler}> ~ Add New Flight</button>
       <button onClick={ClickHandler2}>~ view all Flights</button>
       <button onClick={ClickHandler4}>~ view departure flights</button>
       <button onClick={ClickHandler5}>~ Profile</button>
     </div>
-  
+  </ul>
   );
 };
 

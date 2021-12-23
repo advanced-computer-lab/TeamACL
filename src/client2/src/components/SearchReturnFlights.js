@@ -62,10 +62,18 @@ function SearchReturnFlights() {
 
   return (
      
+
+
+    
     <div>
-      <Link to="/Profile">
-            <li>Profile</li>
-            </Link>
+
+<ul>
+    <li><a href="/Profile">Profile</a></li>
+    <li><a href="/SearchFlight">SearchFlight </a></li>
+    <li><a href="/SearchReturnFlights">Search returning Flights </a></li>
+  </ul>
+
+        <ul class = "formlookplane">
         <h1> search returning flights </h1>
       <form onSubmit={(e) => e.preventDefault()}>
       
@@ -143,6 +151,7 @@ function SearchReturnFlights() {
         //         )
       ))}
       {/* {Flag && details!==null  && <Navigate to={`/MoreDetailsDep/${details}`} />} */}
+      </ul>
     </div>
   );
 }

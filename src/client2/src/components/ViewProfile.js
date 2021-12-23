@@ -69,8 +69,24 @@ export default class ViewProfile extends Component {
     const Job=  this.state.Job;
     const PassportNumber=  this.state.PassportNumber;
     return (
-    <div>
-      <h3>Edit Profile</h3>
+
+     
+    <div >
+       <ul>
+    <li><a href="/Profile">Profile</a></li>
+    <li><a href="/SearchFlight">SearchFlight </a></li>
+    <li><a href="/SearchReturnFlights">Search returning Flights </a></li>
+  </ul> 
+  <div>
+    <ul class = "extra">
+<li><a href="/ViewReservedFlights">ViewReservedFlights</a></li>
+    <li><a href="/Wishlist">View Summary </a></li>
+    <li><a href="/ViewProfile">View your details </a></li>
+  </ul>
+  </div>
+  <ul class = "formlook">
+
+      <h3>My Profile</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
           <label>FirstName: {FirstName} </label>
@@ -131,6 +147,8 @@ export default class ViewProfile extends Component {
             </Link>
         </div>
       </form>
+    
+    </ul>
     </div>
     )
   }

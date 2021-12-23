@@ -7,7 +7,7 @@ import SearchFlight from "./SearchFlight";
 function Nav(){
 return (
     <nav>
-        <u1 className="nav-Links">
+        {/* <u1 className="nav-Links">
             <Link to="/CreateFlight">
             <li>CreateFlight</li>
             </Link>
@@ -18,7 +18,15 @@ return (
             <li>Admin Search</li>
             </Link>
 
-        </u1>
+        </u1> */}
+
+        <ul>
+  <li><a href="/CreateFlight">CreateFlight</a></li>
+  <li><a href="/ViewAllFlights">View Flights</a></li>
+  <li><a href="/UserSearch">Admin Search</a></li>
+</ul>
+
+
     </nav>
 )
 }

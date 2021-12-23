@@ -186,6 +186,7 @@ const AddToWishList = () =>   {
       return (
         
         <div>
+          
           <label for="FlightNumber"> FlightNumber:</label>
           <label>{a.FlightNumber}</label>
          

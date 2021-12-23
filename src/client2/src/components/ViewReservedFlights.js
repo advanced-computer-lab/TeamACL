@@ -27,6 +27,25 @@ const ViewReservedFlights = () =>  {
 
     
 return (
+ 
+  <div>
+          <ul>
+    <li><a href="/Profile">Profile</a></li>
+    <li><a href="/SearchFlight">SearchFlight </a></li>
+    <li><a href="/SearchReturnFlights">Search returning Flights </a></li>
+  </ul>
+    <div>
+      <ul class = "extra">
+  <li><a href="/ViewReservedFlights">ViewReservedFlights</a></li>
+      <li><a href="/Wishlist">View Summary </a></li>
+      <li><a href="/ViewProfile">View your details </a></li>
+    </ul>
+    </div>
+
+
+
+
+
   <TableContainer component={Paper}>
     <Table sx={{ minWidth: 650 }} aria-label="simple table">
       <TableHead>
@@ -66,6 +85,7 @@ return (
       </TableBody>
     </Table>
   </TableContainer>
+  </div>
 );
 }
 export default ViewReservedFlights

@@ -1,4 +1,9 @@
 
+Body{
+  background-image: url('1307258.jpg');
+  background-attachment:fixed;
+}
+
 .App {
   text-align: center;
 }
@@ -13,21 +18,142 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
-Nav{
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  min-height: 10vh;
-  background: rgb(68, 112, 134);
-  color: beige;
+
+
+
+
+
+
+
+
+
+
+
+
+.Horizontall  {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #04161c;
+  overflow: auto;
+  
 }
 
 
+.formlook{
+
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px;
+  width: 500px;
+  height: fit-content;
+  background-color: #E1DDDB;
+  position: fixed;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: larger;
+  padding: 20px;
+  border: 20px;
+  
+}
+
+.formlookplane{
+
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 25px;
+  background: #73AD21;
+  padding: 20px;
+  width: 400px;
+  height: 500px;
+  background-color: #E1DDDB;
+  position: fixed;
+  align-items: center;
+  align-content:center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 20px;
+  border: 20px;
+  
+}
+.viewflight{
+  overflow-y: auto;
+  background-color: #E1DDDB;
+  width: fit-content;
+  top: 50%;
+  left: 50%;
+ 
+ 
+  font-size: larger;
+  padding: 20px;
+  border: 20px;
+
+}
+
+
+
+
+.extra{
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+  width: fit-content;
+  background-color: #222   ;
+
+}
+Nav{
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #E1DDDB;
+} 
+ul {
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0C4A60 ;
+}
+
+
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
 .Nav-Links{
- width: 50%;
- display: flex;
- justify-content: space-around;
- align-items: center;
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
 }
 
 .App-header {

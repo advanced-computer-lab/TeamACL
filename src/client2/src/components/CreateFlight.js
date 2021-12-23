@@ -1,5 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
+import "../App.css"  ;
+import Nav from "./Nav";
 const CreateFlight = () => {
   const [FlightNumber, setFlightNumber] = useState();
   const [DepartureTime, setDepartureTime] = useState();
@@ -36,7 +38,11 @@ const CreateFlight = () => {
   };
 
   return (
+    
+    
     <form>
+       <Nav/>
+       <ul class = "formlookplane">
       <label for="FlightNumber">FlightNumber:</label>
       <input
         type="text"
@@ -152,6 +158,7 @@ const CreateFlight = () => {
       <button type="Create Flight" value="Create Flight" onClick={sub}>
         create flight{" "}
       </button>
+      </ul>
     </form>
   );
 };
