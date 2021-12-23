@@ -44,6 +44,22 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  CountryCode: {
+    type: String,
+    required: true,
+  },
+  HomeAddress: {
+    type: String,
+    required: true,
+  },
+  Password: {
+    type: String,
+    required: true,
+  },
+  Token: {
+    type: String,
+    required: false,
+  },
 });
 
 const User = mongoose.model("User", userSchema);
