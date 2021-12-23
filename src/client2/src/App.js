@@ -23,6 +23,7 @@ import ViewReservedFlights from "./components/ViewReservedFlights";
 import Profile from "./components/Profile";
 import GuestUser from "./components/GuestUser"
 import ViewProfile from "./components/ViewProfile"
+import EditProfile from "./components/EditProfile";
 //import { Router } from "express";
 
 
@@ -51,6 +52,7 @@ const App = () =>  {
       <div>
         
           <Routes>
+            <Route path = "EditProfile" element={<EditProfile/>}/>
          <Route path = "/CreateFlight" element = {<CreateFlight/>} />
          <Route path = "/ViewAllFlights" element = {<ViewAllFlights/>} />
          <Route path = "/SearchFlight" element = {<SearchFlight/>} />

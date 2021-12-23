@@ -7,52 +7,67 @@ export default class EditProfile extends Component {
   constructor(props) {
     super(props);
 
-    this.onChangeUsername = this.onChangeUsername.bind(this);
+    this.onChangeFirstName = this.onChangeFirstName.bind(this);
     this.onChangeEmail = this.onChangeEmail.bind(this);
-    this.onChangePassword = this.onChangePassword.bind(this);
+    
+    this.onChangeLastName = this.onChangeLastName.bind(this);
+    this.onChangeAge = this.onChangeAge.bind(this);
+    this.onChangeBornIn = this.onChangeBornIn.bind(this);
+    this.onChangeLivesIn = this.onChangeLivesIn.bind(this);
+    this.onChangeMartialStatus = this.onChangeMartialStatus.bind(this);
+    this.onChangePhoneNumber = this.onChangePhoneNumber.bind(this);
+    this.onChangeJob = this.onChangeJob.bind(this);
+    this.onChangePassportNumber = this.onChangePassportNumber.bind(this);
+
+
+
+
+
+
     this.onSubmit = this.onSubmit.bind(this);
 
-    this.state = {
-      username: '',
+    this.state = { 
+      FirstName: '',
       Email: '',
       Password: '',
-      users: []
+      LastName:'',
+      Age:0,
+      BornIn:'',
+      LivesIn:'',
+      MartialStatus:'',
+      PhoneNumber:'',
+      Job:'', 
+      PassportNumber:'',
+
+    
     }
   }
 
   componentDidMount() {
-    axios.get('http://localhost:3000/EditProfile/')
+    axios.put('http://localhost:3000/EditProfile/')
       .then(response => {
         this.setState({
-          username: response.data.username,
-          description: response.data.description,
-          duration: response.data.duration,
-          date: new Date(response.data.date)
+          FirstName: response.data.FirstName,
+          LastName: response.data.LastName,
+          Email: response.data.Email,
+          Age: response.data.Age,
+          BornIn: response.data.BornIn,
+          LivesIn: response.data.LivesIn,
+          MartialStatus: response.data.MartialStatus,
+          PhoneNumber: response.data.PhoneNumber,
+          Job: response.data.Job,
+          PassportNumber: response.data.PassportNumber,
         })   
       })
       .catch(function (error) {
         console.log(error);
       })
 
-    axios.get('http://localhost:3000/users/')
-      .then(response => {
-        if (response.data.length > 0) {
-          this.setState({
-            users: response.data.map(user => user.username),
-          })
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-      })
-
+    
+    
   }
 
-  onChangeUsername(e) {
-    this.setState({
-      username: e.target.value
-    })
-  }
+
 
   onChangeEmail(e) {
     this.setState({
@@ -60,9 +75,60 @@ export default class EditProfile extends Component {
     })
   }
 
-  onChangePassword(e) {
+ 
+  onChangeFirstName(e) {
     this.setState({
-      Password: e.target.value
+      FirstName: e.target.value
+    })
+  }
+  
+  onChangeLastName(e) {
+    this.setState({
+      LastName: e.target.value
+    })
+  }
+  
+  onChangeAge(e) {
+    this.setState({
+      Age: e.target.value
+    })
+  }
+  
+  onChangeBornIn(e) {
+    this.setState({
+      BornIn: e.target.value
+    })
+  }
+  
+  onChangeLivesIn(e) {
+    this.setState({
+      LivesIn: e.target.value
+    })
+  }
+  
+  onChangeMartialStatus(e) {
+    this.setState({
+      MartialStatus: e.target.value
+    })
+  }
+  
+  onChangePhoneNumber(e) {
+    this.setState({
+      PhoneNumber: e.target.value
+    })
+  }
+  
+
+  
+  onChangeJob(e) {
+    this.setState({
+      Job: e.target.value
+    })
+  }
+  
+  onChangePassportNumber(e) {
+    this.setState({
+      PassportNumber: e.target.value
     })
   }
 
@@ -73,8 +139,17 @@ export default class EditProfile extends Component {
 
     const newuser = {
       username: this.state.username,
+      
+      FirstName: this.state.FirstName,
+      LastName: this.state.LastName,
       Email: this.state.Email,
-      Password: this.state.Password,
+      Age: this.state.Age,
+      BornIn: this.state.BornIn,
+      LivesIn: this.state.LivesIn,
+      MartialStatus: this.state.MartialStatus,
+      PhoneNumber: this.state.PhoneNumber,
+      Job: this.state.Job,
+      PassportNumber:this.state.PassportNumber,
     }
 
     console.log(newuser);
@@ -87,17 +162,32 @@ export default class EditProfile extends Component {
 
   render() {
     return (
-    <div>
+
+
+      <div >
+      <ul>
+   <li><a href="/Profile">Profile</a></li>
+   <li><a href="/SearchFlight">SearchFlight </a></li>
+   <li><a href="/SearchReturnFlights">Search returning Flights </a></li>
+ </ul> 
+ <div>
+   <ul class = "extra">
+<li><a href="/ViewReservedFlights">ViewReservedFlights</a></li>
+   <li><a href="/Wishlist">View Summary </a></li>
+   <li><a href="/ViewProfile">View your details </a></li>
+ </ul>
+      </div>
+      <ul class = "formlook">
       <h3>Edit Profile</h3>
       <form onSubmit={this.onSubmit}>
         <div className="form-group"> 
-          <label>Username: </label>
+          <label>FirstName: </label>
           <input ref="userInput"
                 type="text"
               required
               className="form-control"
-              value={this.state.username}
-              onChange={this.onChangeUsername}/>
+              value={this.state.FirstName}
+              onChange={this.onChangeFirstName}/>
   
         </div>
         <div className="form-group"> 
@@ -110,21 +200,86 @@ export default class EditProfile extends Component {
               />
         </div>
         <div className="form-group">
-          <label>Password: </label>
+          <label>LastName: </label>
           <input 
               type="text" 
               className="form-control"
-              value={this.state.Password}
-              onChange={this.onChangePassword}
+              value={this.state.LastName}
+              onChange={this.onChangeLastName}
               />
         </div>
-  
+        <div className="form-group">
+          <label>Age: </label>
+          <input 
+              type="number" 
+              className="form-control"
+              value={this.state.Age}
+              onChange={this.onChangeAge}
+              />
+        </div>
+        <div className="form-group">
+          <label>BornIn: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.BornIn}
+              onChange={this.onChangeBornIn}
+              />
+        </div>
+        <div className="form-group">
+          <label>LivesIn: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.LivesIn}
+              onChange={this.onChangeLivesIn}
+              />
+        </div>
+        <div className="form-group">
+          <label>MartialStatus: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.MartialStatus}
+              onChange={this.onChangeMartialStatus}
+              />
+        </div>
+        <div className="form-group">
+          <label>PhoneNumber: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.PhoneNumber}
+              onChange={this.onChangePhoneNumber}
+              />
+        </div>
+        <div className="form-group">
+          <label>Job: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.Job}
+              onChange={this.onChangeJob}
+              />
+        </div>
+        <div className="form-group">
+          <label>PassportNumber: </label>
+          <input 
+              type="text" 
+              className="form-control"
+              value={this.state.PassportNumber}
+              onChange={this.onChangePassportNumber}
+              />
+        </div>
+        
 
         <div className="form-group">
           <input type="submit" value="submit" className="btn btn-primary" />
         </div>
       </form>
+      </ul>
     </div>
+    
     )
   }
 }
