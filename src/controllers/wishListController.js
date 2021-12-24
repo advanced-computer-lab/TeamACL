@@ -4,21 +4,21 @@ const Flight = require("./flightController");
 
 exports.addToWishList = async (req, res) => {
   try {
-    const FlightNumber = Number(req.params.FlightNumber);
-    const DepartureTime = req.params.DepartureTime;
-    const ArrivalTime = req.params.ArrivalTime;
-    const DepartureDate = req.params.DepartureDate;
-    const ArrivalDate = req.params.ArrivalDate;
-    const DurationInHrs = req.params.DurationInHrs;
-    const DateOfFlight = req.params.DateOfFlight;
-    const Airport = req.params.Airport;
-    const DepartureTerminals = req.params.DepartureTerminals;
-    const ArrivalTerminals = req.params.ArrivalTerminals;
-    const From = req.params.From;
-    const To = req.params.To;
-    const TotalTicketPrice = Number(req.params.TotalTicketPrice);
-    const BaggageAllowance = req.params.BaggageAllowance;
-    const TypeOfFlight = req.params.TypeOfFlight;
+    const FlightNumber = Number(req.body.FlightNumber);
+    const DepartureTime = req.body.DepartureTime;
+    const ArrivalTime = req.body.ArrivalTime;
+    const DepartureDate = req.body.DepartureDate;
+    const ArrivalDate = req.body.ArrivalDate;
+    const DurationInHrs = req.body.DurationInHrs;
+    const DateOfFlight = req.body.DateOfFlight;
+    const Airport = req.body.Airport;
+    const DepartureTerminals = req.body.DepartureTerminals;
+    const ArrivalTerminals = req.body.ArrivalTerminals;
+    const From = req.body.From;
+    const To = req.body.To;
+    const TotalTicketPrice = Number(req.body.TotalTicketPrice);
+    const BaggageAllowance = req.body.BaggageAllowance;
+    const TypeOfFlight = req.body.TypeOfFlight;
     const myFlight = await FLights.findOne({ FlightNumber });
     console.log(myFlight);
     const AvailiableSeatsInEconomy = myFlight.AvailiableSeatsInEconomy;
