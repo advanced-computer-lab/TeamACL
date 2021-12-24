@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const bcrypt = require("bcrypt");
-
+var jwt = require("jsonwebtoken");
 //Authentication
 
 //register
@@ -15,9 +15,14 @@ exports.register = async (req, res) => {
       FirstName: req.body.FirstName,
       LastName: req.body.LastName,
       Password: req.body.Password,
+      Age: req.body.Age,
+      BornIn: req.body.BornIn,
+      LivesIn: req.body.LivesIn,
+      MartialStatus: req.body.MartialStatus,
+      Job: req.body.Job,
     };
 
-    const salt = await genSaltSync(10);
+    const salt = bcrypt.genSaltSync(10);
     hashPass = data.Password = bcrypt.hashSync(data.Password, salt);
 
     await User.create(data);
@@ -44,7 +49,7 @@ exports.login = async (req, res) => {
     const userNewPass = req.body.Password;
 
     const userExist = await User.find({ Email: userEmail });
-    const userPass = await User.find({ Password: userNewPass });
+    const userPass = userExist[0].Password;
 
     if (!userExist)
       return res.status(404).json({
@@ -52,13 +57,17 @@ exports.login = async (req, res) => {
         massege: err,
       });
 
-    if (!bcrypt.compareSync(userNewPass, userPass))
+    if (!bcrypt.compareSync(userNewPass, userPass)) {
+      console.log("yyyy");
       return res.status(404).json({
         status: "fail",
         massege: err,
       });
+    }
 
-    const token = jwt.sign({ userId: userExist._id }, {});
+    const token = jwt.sign({ userId: userExist._id }, "SECRET", {
+      expiresIn: "1h",
+    });
 
     res.status(200).json({
       status: "success",
@@ -71,6 +80,7 @@ exports.login = async (req, res) => {
       status: "fail",
       massege: err,
     });
+    console.log(err);
   }
 };
 
@@ -104,7 +114,6 @@ exports.logout = async (req, res) => {
 exports.createUser = async (req, res) => {
   try {
     const newUser = await User.create(req.body);
-    console.log(req.body);
     res.status(201).json({
       status: "success",
       data: {
