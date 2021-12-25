@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.main-container {
+  width: 95%;
+  height: auto;
+  /* border: solid; */
+  margin: auto;
+}
+.flights {
+  width: 100%;
+  height: auto;
+  /* border: solid black; */
+}
+.flights .flight {
+  width: 100%;
+  height: auto;
+  /* border: solid red; */
+  margin-top: 20px;
+  border-radius: 0px 25px;
+  background-color: rgb(243, 242, 242);
+}
+.flights .flight .data {
+  font-size: 20px;
+  margin-left: 10px;
+  margin-bottom: 5px;
+  color: rgb(3, 3, 85);
+  font-weight: 300;
+}
+.flights .flight .data .button {
+  width: 200px;
+  height: 200px;
+  border: solid;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.flights .flight .divv {
+  width: 600px;
+  height: auto;
+}

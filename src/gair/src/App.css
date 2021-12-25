@@ -1,0 +1,160 @@
+Body {
+  background-image: url("1307258.jpg");
+  background-attachment: fixed;
+}
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Horizontall {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 200px;
+  background-color: #04161c;
+  overflow: auto;
+}
+
+.formlook {
+  border-radius: 25px;
+  background: #73ad21;
+  padding: 20px;
+  width: 500px;
+  height: fit-content;
+  background-color: #e1dddb;
+  position: fixed;
+
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: larger;
+  padding: 20px;
+  border: 20px;
+}
+
+.formlookplane {
+  max-height: 80%;
+  overflow-y: auto;
+  border-radius: 25px;
+  background: #73ad21;
+  padding: 20px;
+  width: 400px;
+  height: 500px;
+  background-color: #e1dddb;
+  position: fixed;
+  align-items: center;
+  align-content: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 20px;
+  border: 20px;
+}
+.viewflight {
+  overflow-y: auto;
+  background-color: #e1dddb;
+  width: fit-content;
+  top: 50%;
+  left: 50%;
+
+  font-size: larger;
+  padding: 20px;
+  border: 20px;
+}
+
+.extra {
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  /* overflow: hidden; */
+  width: fit-content;
+  background-color: #222;
+}
+Nav {
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e1dddb;
+}
+ul {
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #0c4a60;
+}
+
+li {
+  float: left;
+}
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
+.Nav-Links {
+  position: sticky;
+  align-items: center;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
