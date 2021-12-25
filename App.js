@@ -7,7 +7,12 @@ const WishListRouter = require("./src/routes/WishListRouts");
 const cors = require("cors");
 const User = require("./src/models/User");
 const Flight = require("./src/models/Flight");
+const stripe = require ("stripe")("pk_test_51KAgrmLAPEmlYDvjvJfkTYQIQsd3rUlgs9PBCDSuBXLGrrnv1WQDBuPUixnOrvf6a0OjfkWSbDCVHMRlnP8La3T90079LAvI9J")
+const uuid = require("uuid/v4")
 
+//middleware
+
+////
 const app = express();
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
