@@ -12,6 +12,7 @@ exports.register = async (req, res) => {
       PassportNumber: req.body.PassportNumber,
       PhoneNumber: req.body.PhoneNumber,
       Email: req.body.Email,
+      IsAdmin: req.body.IsAdmin,
       FirstName: req.body.FirstName,
       LastName: req.body.LastName,
       Password: req.body.Password,
@@ -52,7 +53,10 @@ exports.login = async (req, res) => {
 
     const userExist = await User.find({ Email: userEmail });
     const userPass = userExist[0].Password;
-
+    const IsAdmin = userExist[0].IsAdmin;
+    console.log(userPass);
+    console.log(userExist);
+    console.log(IsAdmin);
     if (!userExist)
       return res.status(404).json({
         status: "fail",
@@ -75,6 +79,7 @@ exports.login = async (req, res) => {
       status: "success",
       data: {
         token,
+        IsAdmin,
       },
     });
   } catch (err) {
