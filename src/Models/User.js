@@ -2,13 +2,22 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  Name: {
+  FirstName: {
+    type: String,
+    required: true,
+  },
+  LastName: {
     type: String,
     required: true,
   },
   Email: {
     type: String,
     required: true,
+    unique: true,
+  },
+  IsAdmin: {
+    type: Boolean,
+    default: false,
   },
   Age: {
     type: Number,
@@ -33,6 +42,27 @@ const userSchema = new Schema({
   Job: {
     type: String,
     required: true,
+  },
+  PassportNumber: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  CountryCode: {
+    type: String,
+    required: true,
+  },
+  HomeAddress: {
+    type: String,
+    required: true,
+  },
+  Password: {
+    type: String,
+    required: true,
+  },
+  Token: {
+    type: String,
+    required: false,
   },
 });
 
