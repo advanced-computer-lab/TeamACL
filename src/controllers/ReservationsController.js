@@ -18,11 +18,9 @@ exports.createReservation = async (req, res) => {
     const ChosenCabin = req.body.ChosenCabin;
     const SeatNumber = req.body.SeatNumber;
     // console.log(req.params);
-    console.log(ChosenCabin, SeatNumber);
+    console.log(`Cabin =====>${ChosenCabin}`, `SeatNumber ====>${SeatNumber}`);
     const reservation = await Reserve.create({
       UserEmail,
-      UserId,
-      FlightId,
       FlightNumber,
       ChosenCabin,
       SeatNumber,
@@ -111,17 +109,33 @@ exports.createReservation = async (req, res) => {
 
 exports.getReservation = async (req, res) => {
   try {
-    const UserId = req.params.UserId;
+    const UserEmail = req.params.UserEmail;
     const FlightId = req.params.FlightId;
     const FlightNumber = Number(req.params.FlightNumber);
     console.log(req.params);
-    console.log(UserId, FlightId, FlightNumber);
+    console.log(UserEmail, FlightId, FlightNumber);
     const reservation = await Reserve.find({
-      UserId: UserId,
-      FlightId: FlightId,
-      FlightNumber: FlightNumber,
+      UserEmail: UserEmail,
     });
     console.log(reservation);
+    res.status(200).json({
+      status: "success",
+      results: reservation.length,
+      data: {
+        reservation,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+    console.log(err);
+  }
+};
+exports.getAllReservations = async (req, res) => {
+  try {
+    const reservation = await Reserve.find();
     res.status(200).json({
       status: "success",
       results: reservation.length,

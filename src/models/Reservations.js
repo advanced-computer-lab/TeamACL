@@ -3,14 +3,7 @@ const Reservation = mongoose.Schema({
   UserEmail: {
     type: String,
     required: true,
-  },
-  UserId: {
-    type: String,
-    required: true,
-  },
-  FlightId: {
-    type: String,
-    required: true,
+    unique: false,
   },
   FlightNumber: {
     type: Number,

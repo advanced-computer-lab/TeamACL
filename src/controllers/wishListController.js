@@ -5,6 +5,7 @@ const Flight = require("./flightController");
 exports.addToWishList = async (req, res) => {
   try {
     const FlightNumber = Number(req.body.FlightNumber);
+    const UserEmail = req.body.UserEmail;
     const DepartureTime = req.body.DepartureTime;
     const ArrivalTime = req.body.ArrivalTime;
     const DepartureDate = req.body.DepartureDate;
@@ -25,9 +26,10 @@ exports.addToWishList = async (req, res) => {
     const AvailableSeatsInBusiness = myFlight.AvailableSeatsInBusiness;
     const AvailableSeatsInFirstClass = myFlight.AvailableSeatsInFirstClass;
 
-    console.log(TypeOfFlight);
+    console.log("USEREMAIL =======>", UserEmail);
     const flight = await WishList.create({
       FlightNumber,
+      UserEmail,
       DepartureTime,
       ArrivalTime,
       DepartureDate,
@@ -63,6 +65,28 @@ exports.addToWishList = async (req, res) => {
 
 exports.getWishList = async (req, res) => {
   try {
+    const UserEmail = req.params.UserEmail;
+    const flights = await WishList.find({
+      UserEmail,
+    });
+    // console.log(flights);
+    res.status(200).json({
+      status: "success",
+      results: flights.length,
+      data: {
+        WishList: flights,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+  }
+};
+
+exports.getAll = async (req, res) => {
+  try {
     const flights = await WishList.find();
     // console.log(flights);
     res.status(200).json({
@@ -77,5 +101,25 @@ exports.getWishList = async (req, res) => {
       status: "fail",
       massege: err,
     });
+  }
+};
+
+exports.delete = async (req, res) => {
+  try {
+    const id = req.params.id;
+    const flights = await WishList.findByIdAndDelete(id);
+    res.status(200).json({
+      status: "success",
+      results: flights.length,
+      data: {
+        WishList: flights,
+      },
+    });
+  } catch (err) {
+    res.status(404).json({
+      status: "fail",
+      massege: err,
+    });
+    console.log(err);
   }
 };

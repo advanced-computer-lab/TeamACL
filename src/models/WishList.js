@@ -5,6 +5,11 @@ const wishListSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
+  UserEmail: {
+    type: String,
+    required: true,
+    unique: false,
+  },
   DepartureTime: {
     type: String,
     required: true,

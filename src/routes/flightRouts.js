@@ -15,9 +15,10 @@ router
   .post(flightController.createFLight)
   .get(flightController.getAllFlights);
 
+router.route("/selectedFlight").get(flightController.getSelectedFlight);
+
 router
   .route("/:id")
-  .get(flightController.getSelectedFlight)
   .put(flightController.updateFlight)
   .delete(flightController.deleteFlight);
 

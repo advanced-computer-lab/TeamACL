@@ -47,6 +47,8 @@ exports.login = async (req, res) => {
   try {
     const userEmail = req.body.Email;
     const userNewPass = req.body.Password;
+    console.log(userEmail);
+    console.log(userNewPass);
 
     const userExist = await User.find({ Email: userEmail });
     const userPass = userExist[0].Password;
@@ -97,7 +99,7 @@ exports.logout = async (req, res) => {
         massege: err,
       });
 
-    await User.deleteOne(user);
+    await User.deleteOne({ user });
 
     res.status(200).json({
       status: "success",
@@ -107,26 +109,10 @@ exports.logout = async (req, res) => {
       status: "fail",
       massege: err,
     });
+    console.log(err);
   }
 };
 //End Authentication
-
-exports.createUser = async (req, res) => {
-  try {
-    const newUser = await User.create(req.body);
-    res.status(201).json({
-      status: "success",
-      data: {
-        User: newUser,
-      },
-    });
-  } catch (err) {
-    res.status(400).json({
-      status: "fail",
-      massege: "Invalid data sent",
-    });
-  }
-};
 
 exports.updateUser = async (req, res) => {
   console.log(req.body);
